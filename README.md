@@ -7,6 +7,3 @@
 ## Notes
 
 ポート番号は10180番ポートです。  
-reactのファイルを変更した場合は以下のコマンドを実行してください。  
-
-- ``` docker-compose exec react_app bash -c "cd react-app/ && yarn run build" ```
