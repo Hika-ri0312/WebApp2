@@ -3,14 +3,16 @@ services:
     react_app:
         build: ./dockerfiles/react
         container_name: react_app
+        restart: always
         volumes:
             - ./dockerfiles/react/src/:/usr/src/app
-        command: sh -c "cd react-app && yarn run start"
+        command: sh -c "cd react-app &&yarn install && yarn run start"
         expose:
             - "3000"
     nginx:
         image: nginx:latest
         container_name: nginx
+        restart: always
         ports:
           - 10180:80
         volumes:
