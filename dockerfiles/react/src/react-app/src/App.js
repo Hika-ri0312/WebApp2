@@ -27,6 +27,7 @@ function App() {
   return (
     <div>
       <div>
+        質問を入力してください。
         <MesPr mess={count} />
       </div>
       <input type="text" ref={nameRef}/>
