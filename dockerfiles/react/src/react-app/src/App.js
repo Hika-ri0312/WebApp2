@@ -1,6 +1,8 @@
 import './App.css';
 import {useState,useRef} from "react"
 import MesPr from './MesPr';
+import axios from "axios";
+const baseURL = "http://localhost:2900"
 
 
 
@@ -23,6 +25,16 @@ function App() {
     });
     nameRef.current.value = null;
   }; 
+
+  const [post, setPost] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setPost(response.data);
+    });
+  }, []);
+
+  if (!post) return null;
    
 
   return (
