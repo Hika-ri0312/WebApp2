@@ -9,6 +9,7 @@ const ClickSendButton = () =>{
     const question = useRef();
     const [message, setMessage] = React.useState([]);
     const [refl, setRefl] = React.useState([]);
+    let inputMess
     useEffect(() => {
         if(message.length === 0) return;
         setMessage((prev) =>{
@@ -20,20 +21,20 @@ const ClickSendButton = () =>{
         });
     }, [refl]);
 
-    const Requestapi = ({name}) =>{
+    const Requestapi = () =>{
         const baseURL = "http://localhost:10180";
+/*
         axios.get(baseURL)
             .then(res => {
                 setRefl(res.data)
             })
-/*
-            axios.refl(baseURL, {
-                "title": "tex",
-            })
+*/
+        axios.post(baseURL, {
+            "title": inputMess,
+        })
             .then(res => {
                 setRefl(res.data)
             })
-*/
     }
 
     const click = (event) => {
@@ -48,7 +49,8 @@ const ClickSendButton = () =>{
             )
         });
         question.current.value = null;
-        Requestapi(name)
+        inputMess=name
+        Requestapi()
     }; 
     return(
         <div>
