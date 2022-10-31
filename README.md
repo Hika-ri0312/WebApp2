@@ -6,7 +6,7 @@
 
 ## Notes
 
-ポート番号は10180番ポートです。  
+ポート番号は8080番ポートです。  
 VMとファイルを同期するには、WebApp2ディレクトリ内で以下のコマンドを使用します。  
 - ``` rsync -avh --exclude-from='exclude-file.txt' -e ssh ../WebApp2 test-vm:~/workspace/src/ ```  
 

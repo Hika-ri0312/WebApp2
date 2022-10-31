@@ -2,10 +2,11 @@ import React from 'react'
 
 const MesPr = ({mess}) => {
     
-    return mess.map((mes) => (
-        <div>
+    if (mess.length === 0) return;
+    return mess.map((mes,index) => (
+        <li key={index}>
             {mes}
-        </div>
+        </li>
     ));
 }
 

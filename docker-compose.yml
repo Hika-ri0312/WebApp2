@@ -1,15 +1,20 @@
 version: '2.12'
 services:
-
     api:
         build: ./dockerfiles/api
-        container_name: 'python3'
-        restart: always
+        container_name: 'api'
+        #restart: always
         tty: true
         volumes:
             - ./dockerfiles/api/src/:/root/src
+#        command: sh -c "flask --debug run -h 0.0.0.0 -p 9000"
+#        ports:
+#          - 9000:9000
+
+        command: sh -c "flask --debug run -h api -p 9000"
         expose:
-            - "2900"
+#            - "2900"
+            - "9000"
 
     react_app:
         build: ./dockerfiles/react
@@ -18,8 +23,11 @@ services:
         volumes:
             - ./dockerfiles/react/src/:/usr/src/app
         command: sh -c "cd react-app &&yarn install && yarn run start"
-        expose:
-            - "3000"
+        ports:
+          - 8080:8080
+            
+#        expose:
+#            - "3000"
     nginx:
         image: nginx:latest
         container_name: nginx
@@ -27,7 +35,7 @@ services:
         ports:
           - 10180:80
         volumes:
-          - ./dockerfiles/react/src/react-app/build:/var/www
+#          - ./dockerfiles/react/src/react-app/build:/var/www
           - ./dockerfiles/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
         depends_on:
           - react_app

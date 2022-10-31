@@ -1,22 +1,25 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
 # 日本語を使えるように
 app.config['JSON_AS_ASCII'] = False
 
-books = [{'name': 'EffectivePython', 'price': 3315}, {'name': 'Expert Python Programming', 'price': 3960}]
-
-
-@app.route('/')
+@app.route('/',methods=['GET'])
 def get_json():
-    data = {
-        "id": 3,
-        "name": "hoge",
-        "ref": [1, 2, 4],
+    return {
+        "title":"準備中です。自分で調べやがれ下さい。",
     }
-    return jsonify(data)
 
+#@app.route('/', methods=['POST'])
+#def post_json():
+#    json = request.get_json() 
+#    print(json)
+#    return {
+#    ref = {
+#        "title":"See you!",
+#    }
+#    return jsonify(ref)
 
-if __name__ == 'main':
+if __name__ == '__main__':
     app.run()
