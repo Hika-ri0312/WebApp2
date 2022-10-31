@@ -24,7 +24,7 @@ services:
             - ./dockerfiles/react/src/:/usr/src/app
         command: sh -c "cd react-app &&yarn install && yarn run start"
         ports:
-          - 8080:8080
+          - 10280:10280
             
 #        expose:
 #            - "3000"
