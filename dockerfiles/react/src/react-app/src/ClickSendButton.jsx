@@ -23,6 +23,7 @@ const ClickSendButton = () =>{
 
     const Requestapi = () =>{
         const baseURL = "http://localhost:10180";
+//        const baseURL = "http://10.0.4.82:10180";
 /*
         axios.get(baseURL)
             .then(res => {
