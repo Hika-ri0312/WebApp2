@@ -26,12 +26,12 @@
         - ```dockerfiles/nginx/nginx.conf```
         - 1つ目
             - 修正前
-                - ```20行目 ```add_header Access-Control-Allow-Origin http://localhost:10280;```
+                - 20行目 ```add_header Access-Control-Allow-Origin http://localhost:10280;```
             - 修正後
-                - ```20行目 ```#add_header Access-Control-Allow-Origin http://localhost:10280;```
+                - 20行目 ```#add_header Access-Control-Allow-Origin http://localhost:10280;```
         - 2つ目
             - 修正前
-                - ```21行目 ```#add_header Access-Control-Allow-Origin http://10.0.4.82:10280;```
+                - 21行目 ```#add_header Access-Control-Allow-Origin http://10.0.4.82:10280;```
             - 修正後
-                - ```21行目 ```add_header Access-Control-Allow-Origin http://10.0.4.82:10280;```
+                - 21行目 ```add_header Access-Control-Allow-Origin http://10.0.4.82:10280;```
 
