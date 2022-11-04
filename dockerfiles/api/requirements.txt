@@ -3,8 +3,5 @@ flask
 spacy
 scipy
 numpy
-setuptools_rust
-sudachipy
-sudachidict_small
-sudachidict_full
 ginza
+ja_ginza
