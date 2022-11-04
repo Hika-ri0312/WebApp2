@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:latest
 USER root
 
 RUN apt-get update
@@ -15,6 +15,10 @@ ENV TERM xterm
 RUN mkdir -p /root/src
 COPY requirements.txt /root/src
 WORKDIR /root/src
+
+RUN apt install gcc
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH "/root/.cargo/bin:$PATH"
 
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools

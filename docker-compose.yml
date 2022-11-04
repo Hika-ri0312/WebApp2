@@ -13,7 +13,6 @@ services:
 
         command: sh -c "flask --debug run -h api -p 9000"
         expose:
-#            - "2900"
             - "9000"
 
     react_app:
