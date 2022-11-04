@@ -3,5 +3,6 @@ flask
 spacy
 scipy
 numpy
+pandas
 ginza
 ja_ginza

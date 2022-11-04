@@ -15,7 +15,7 @@ def get_json():
 @app.route('/', methods=['POST'])
 def post_json():
     reqJson = request.get_json()["title"]
-    resMes = jus.cos_distance(reqJson,'夏休みはいつ') 
+    resMes = jus.cos_distance(reqJson) 
     # if "夏休み" in reqJson:
     #     resMes = "明日からです(大嘘)。"
     # elif "第3クォーター" in reqJson:
