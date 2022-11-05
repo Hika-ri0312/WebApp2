@@ -9,8 +9,8 @@ nlp  = spacy.load('ja_ginza')
 
 def text_vector(text):
     doc = nlp(text)
-    for token in doc:  # Token単位で処理結果を参照。
-        print(token.i, token.lemma_, token.pos_)
+#    for token in doc:  # Token単位で処理結果を参照。
+#        print(token.i, token.lemma_, token.pos_)
 
     vec = doc.vector
     
@@ -23,8 +23,8 @@ def load_csv():
 
     for qa in qa_list:
         qa_vec.append(text_vector(qa))
-
-    qa_list_zip = sorted(zip(qa_vec, qa_lists["answer"]))
+    
+    qa_list_zip = zip(list(qa_vec), list(qa_lists["answer"]))
 
     return qa_list_zip
     
