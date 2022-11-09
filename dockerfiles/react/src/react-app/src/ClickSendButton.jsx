@@ -22,8 +22,8 @@ const ClickSendButton = () =>{
     }, [refl]);
 
     const Requestapi = () =>{
-        const baseURL = "http://localhost:10180";
-//        const baseURL = "http://10.0.4.82:10180";
+        const host = process.env.REACT_APP_IP_ADDR
+        const baseURL = "http://" + host + ":10180";
 /*
         axios.get(baseURL)
             .then(res => {
