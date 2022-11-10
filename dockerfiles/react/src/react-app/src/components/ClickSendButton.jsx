@@ -1,6 +1,6 @@
 import React from "react"
 import {createContext,useContext,useEffect,useState,useRef} from 'react'
-import { UserMess } from './App'
+import { UserMess } from '../App'
 import MesPr from './MesPr';
 import axios from "axios"
 import {v4 as uuidv4 } from "uuid";
