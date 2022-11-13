@@ -10,9 +10,8 @@ export const Login = () => {
             <Link to="/">Home</Link>
             <br />
 
-            
-        
-          
+            <Link to="/calendar">Calendar</Link>
+
 
         
         </div>
