@@ -1,0 +1,40 @@
+***************
+*** 1,5 ****
+  version: '2.12'
+  services:
+      api:
+          build: ./dockerfiles/api
+          container_name: 'api'
+--- 1,16 ----
+  version: '2.12'
+  services:
++     db:
++         build: ./dockerfiles/db
++         volumes:
++           - ./dockerfiles/db/initdb.d:/docker-entrypoint-initdb.d
++           - ./dockerfiles/db/mysql:/var/lib/mysql
++         image: mysql
++         container_name: "mysql"
++         environment:
++           - MYSQL_ROOT_PASSWORD= "vsFMSFVq7kldZGNy"
++         expose:
++             - "3309"
+      api:
+          build: ./dockerfiles/api
+          container_name: 'api'
+***************
+*** 33,38 ****
+          depends_on:
+            - react_app
+            - api
+          environment:
+              IP_ADDR: ${IP_ADDR}
+          volumes:
+--- 44,50 ----
+          depends_on:
+            - react_app
+            - api
++           - db
+          environment:
+              IP_ADDR: ${IP_ADDR}
+          volumes:

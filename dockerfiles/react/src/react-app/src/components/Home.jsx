@@ -11,9 +11,7 @@ export const Home = () => {
         <div>
             <div className={style.home}>
                 <Link to="/login">Login</Link>
-
             </div>
-            
             <InitComment />
             <ClickSendButton />
         </div>
