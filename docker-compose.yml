@@ -1,16 +1,16 @@
 version: '2.12'
 services:
     db:
-    build: ./mysql/
-    volumes:
-      - ./dockerfiles/db/initdb.d:/docker-entrypoint-initdb.d
-      - ./dockerfiles/db/mysql:/var/lib/mysql
-    image: mysql
-    container_name: "mysql"
-    environment:
-      - MYSQL_ROOT_PASSWORD= "vsFMSFVq7kldZGNy"
-    expose:
-        - "3309"
+        build: ./dockerfiles/db
+        volumes:
+          - ./dockerfiles/db/initdb.d:/docker-entrypoint-initdb.d
+          - ./dockerfiles/db/mysql:/var/lib/mysql
+        image: mysql
+        container_name: "mysql"
+        environment:
+          - MYSQL_ROOT_PASSWORD= "vsFMSFVq7kldZGNy"
+        expose:
+            - "3309"
     api:
         build: ./dockerfiles/api
         container_name: 'api'

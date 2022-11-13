@@ -5,13 +5,13 @@ import csv
 
 #PDFファイルパス
  
-def read_pdf():
-    dfs = tabula.read_pdf("./text/gakunennreki/pdf/gakunennreki.pdf", stream=True,pages="all")
+def read_pdfs():
+    dfs = tabula.read_pdf("./modules/text/gakunennreki/pdf/gakunennreki.pdf", stream=True,pages="all")
     return dfs
     #CSVへ出力
         
 def preprocess_text():
-    df_clean = pd.read_csv("./text/csv/gakunennreki.csv", names=['year','month1','day1','week_day','month2','day2','content'])
+    df_clean = pd.read_csv("./modules/text/csv/gakunennreki.csv", names=['year','month1','day1','week_day','month2','day2','content'])
     df_clean['month_day1'] = df_clean['month1']+df_clean['day1']
     df_clean['month_day2'] = df_clean['month2']+df_clean['day2']
     del_ind = []
@@ -32,15 +32,17 @@ def preprocess_text():
     return df_clean
 
 def pdf2csv():
-    dfs = read_pdf()
+    dfs = read_pdfs()
     for df in dfs:
-        df.to_csv("./text/csv/gakunennreki.csv", index=None)    
+        df.to_csv("./modules/text/csv/gakunennreki.csv", index=None)    
     df_clean = preprocess_text()
     #変換したデータをcsvに上書き
-    df_clean.to_csv("./text/csv/gakunennreki.csv",columns=['content','month_day1'])
+    df_clean.rename(columns={'content':'question'}, inplace=True)
+    df_clean.rename(columns={'month_day1':'answer'}, inplace=True)
+    df_clean.to_csv("./modules/text/csv/gakunennreki.csv",columns=['question','answer'])
  
 def main():
-    dfs = read_pdf()
+    dfs = read_pdfs()
     #print(dfs[0])
     df_clean = preprocess_text()
     #print(df_clean)

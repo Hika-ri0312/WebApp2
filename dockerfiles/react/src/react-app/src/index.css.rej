@@ -1,0 +1,13 @@
+***************
+*** 11,13 ****
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+--- 11,17 ----
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
++ 
++ @tailwind base;
++ @tailwind components;
++ @tailwind utilities;

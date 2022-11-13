@@ -1,0 +1,17 @@
+***************
+*** 14,20 ****
+          if(message.length === 0) return;
+          setMessage((prev) =>{
+              let a = [...prev] 
+-             a.push(refl.title)
+              return(
+                  [...a]
+              )
+--- 14,20 ----
+          if(message.length === 0) return;
+          setMessage((prev) =>{
+              let a = [...prev] 
++             a.push(refl.title + " です。")
+              return(
+                  [...a]
+              )

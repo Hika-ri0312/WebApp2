@@ -4,6 +4,6 @@ spacy
 scipy
 numpy
 pandas
-tabula
+tabula-py
 ginza
 ja_ginza
