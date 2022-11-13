@@ -2,6 +2,8 @@ import spacy
 import numpy as np
 import pandas as pd
 import scipy.spatial.distance as dis
+import glob
+
 
 
 nlp  = spacy.load('ja_ginza')
@@ -17,7 +19,17 @@ def text_vector(text):
     return vec
 
 def load_csv():
-    qa_lists = pd.read_csv("./modules/qa_list.csv")
+    file = glob.glob("./modules/text/csv/*")
+    qa_lists = pd.DataFrame(
+        data={'question': [], 
+              'answer': []
+              }
+    )
+    for path in file:
+        read_qa_list = pd.read_csv(path)
+        qa_lists=pd.merge(qa_lists,read_qa_list,how="outer", on = ['question','answer'])
+    qa_lists
+    qa_lists.to_csv("./sample.csv",columns=['question','answer'])
     qa_vec = []
     qa_list = qa_lists['question']
 
@@ -29,18 +41,9 @@ def load_csv():
     return qa_list_zip
     
 
-"""
-def cos_distance(text1,text2):
-    vec1 = text_vector(text1)
-    vec2 = text_vector(text2)
-    
-    distances = dis.cosine(vec1,vec2)
-    return distances
-"""
-    
+def main():
+    load_csv()
+   
 if __name__ == "__main__":
-    text1 = "夏休みはいつですか"
-    text2 = "春休みはいつですか"
-    
-    #print(cos_distance(text1,text2))
+    main() 
     
