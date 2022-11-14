@@ -38,9 +38,6 @@ export const EventModal = () => {
                 <MdDeleteForever />
               </button>
             )}
-            <button onClick={() => setShowEventModal(false)}>
-              <MdClose />
-            </button>
           </div>
         </header>
         <div className="p-3">
