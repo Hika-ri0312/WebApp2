@@ -7,7 +7,7 @@ export const EventModal = () => {
     useContext(GlobalContext);
   const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : "");
 
-  const handleSubmit = (e) => {
+  const addAndModifSchedule = (e) => {
     // クリック時に送信するというdefaultの動作をキャンセルする
     e.preventDefault();
     const calendarEvent = {
@@ -17,9 +17,19 @@ export const EventModal = () => {
     };
     if (selectedEvent) {
       dispatchCalEvent({ type: "update", payload: calendarEvent });
+      console.log({calendarEvent});
     } else {
       dispatchCalEvent({ type: "push", payload: calendarEvent });
+      console.log({calendarEvent});
     }
+    setShowEventModal(false);
+  };
+
+  const deleteSchedule = () => {
+    // クリック時に送信するというdefaultの動作をキャンセルする
+    //e.preventDefault();
+    console.log({selectedEvent});
+    dispatchCalEvent({ type: "delete", payload: selectedEvent });
     setShowEventModal(false);
   };
 
@@ -29,15 +39,13 @@ export const EventModal = () => {
         <header className="bg-gray-100 px-4 py-2 flex justify-end">
           <div className="text-gray-400">
             {selectedEvent && (
-              <button
-                onClick={() => {
-                  dispatchCalEvent({ type: "delete", payload: selectedEvent });
-                  setShowEventModal(false);
-                }}
-              >
+              <button onClick={() => {deleteSchedule();}}>
                 <MdDeleteForever />
               </button>
             )}
+            <button onClick={() => setShowEventModal(false)}>
+              <MdClose />
+            </button>
           </div>
         </header>
         <div className="p-3">
@@ -58,7 +66,7 @@ export const EventModal = () => {
         <footer className="flex justify-end border-t p-3 mt-5">
           <button
             type="submit"
-            onClick={handleSubmit}
+            onClick={addAndModifSchedule}
             className="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white"
           >
             Save
