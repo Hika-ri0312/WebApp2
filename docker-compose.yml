@@ -2,15 +2,21 @@ version: '2.12'
 services:
     db:
         build: ./dockerfiles/db
-        volumes:
-          - ./dockerfiles/db/initdb.d:/docker-entrypoint-initdb.d
-          - ./dockerfiles/db/mysql:/var/lib/mysql
         image: mysql
         container_name: "mysql"
         environment:
-          - MYSQL_ROOT_PASSWORD= "vsFMSFVq7kldZGNy"
+            MYSQL_ROOT_PASSWORD: ${ROOT_PASS}
+            MYSQL_DATABASE: ${DB_NAME}
+            MYSQL_USER: ${DB_USER}
+            MYSQL_PASSWORD: ${DB_PASS}
+            TZ: ${TZ}
         expose:
-            - "3309"
+            - "3306"
+        volumes:
+          - ./dockerfiles/db/initdb.d:/docker-entrypoint-initdb.d
+          - ./dockerfiles/db/mysql:/var/lib/mysql
+          - ./dockerfiles/db/my.cnf:/etc/mysql/conf.d/my.cnf
+
     api:
         build: ./dockerfiles/api
         container_name: 'api'
@@ -21,6 +27,8 @@ services:
         command: sh -c "flask --debug run -h api -p 9000"
         expose:
             - "9000"
+        depends_on:
+          - db
 
     react_app:
         build: ./dockerfiles/react

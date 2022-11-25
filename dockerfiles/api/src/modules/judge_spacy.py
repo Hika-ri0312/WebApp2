@@ -1,7 +1,7 @@
 import spacy 
 import numpy as np
 import modules.convert_csv  as conv
-
+import math
 nlp  = spacy.load('ja_ginza')
 
 
@@ -15,7 +15,11 @@ def text_vector(text):
     return vec
 
 def cos_sim(v1,v2):
-    return np.dot(v1,v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
+    ret = np.dot(v1,v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
+    if math.isnan(ret):
+        return 0
+    else:
+        return ret
 
 def cos_distance(text1):
     vec1 = text_vector(text1)
@@ -25,12 +29,13 @@ def cos_distance(text1):
         angles.append(cos_sim(vec1,vec2))
     idx = np.asarray(angles).argmax()
     ret_ans = qa_lists[idx]
-    #print(angles)
     #print(vec1)
     #print(qa_vec[idx])
     #print(cos_sim(vec1,qa_vec[idx]))
     if not(cos_sim(vec1,qa_vec[idx]) > 0.55):
         ret_ans = "すみません、よくわかりません"
+    else:   
+        ret_ans = ret_ans + " です。"
     
     return ret_ans
 
