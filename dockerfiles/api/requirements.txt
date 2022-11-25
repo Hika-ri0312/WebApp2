@@ -7,3 +7,4 @@ pandas
 tabula-py
 ginza
 ja_ginza
+mysqlclient

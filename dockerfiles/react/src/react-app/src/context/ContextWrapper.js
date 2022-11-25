@@ -1,7 +1,8 @@
 import React, { useReducer, useState, useEffect } from "react";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
-
+import axios from "axios";
+  
 const saveEventsReducer = (state, { type, payload }) => {
   switch (type) {
     case "push":
@@ -15,12 +16,13 @@ const saveEventsReducer = (state, { type, payload }) => {
   }
 };
 
+/*
 const initEvents = () => {
   const storageEvents = localStorage.getItem("savedEvents");
-  console.log(storageEvents);
   const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
   return parsedEvents;
 };
+*/
 
 const ContextWrapper = (props) => {
   const [monthIndex, setMonthIndex] = useState(dayjs().month());
@@ -30,14 +32,15 @@ const ContextWrapper = (props) => {
   const [savedEvents, dispatchCalEvent] = useReducer(
     saveEventsReducer,
     [],
-    initEvents
+    //initEvents
   );
-
+  /*
   useEffect(() => {
     // 以下構文でlocalStorageに保存
     // localStorage.setItem('key', 'value')
     localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
   }, [savedEvents]);
+  */
 
   useEffect(() => {
     if (!showEventModal) {
@@ -66,6 +69,3 @@ const ContextWrapper = (props) => {
 };
 
 export default ContextWrapper;
-
-
-

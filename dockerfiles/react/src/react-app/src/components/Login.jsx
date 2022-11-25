@@ -2,7 +2,7 @@ import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 
 import { Home } from "./Home";
 
-export const Login = () => {
+const Login = () => {
     return (
         <div>
             
@@ -16,4 +16,5 @@ export const Login = () => {
         
         </div>
     );
-  };
+};
+export default Login

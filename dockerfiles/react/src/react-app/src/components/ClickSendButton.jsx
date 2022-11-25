@@ -14,7 +14,7 @@ const ClickSendButton = () =>{
         if(message.length === 0) return;
         setMessage((prev) =>{
             let a = [...prev] 
-            a.push(refl.title + " です。")
+            a.push(refl.title)
             return(
                 [...a]
             )

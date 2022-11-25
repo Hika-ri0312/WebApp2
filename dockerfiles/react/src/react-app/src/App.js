@@ -6,9 +6,9 @@ import { createContext,useContext,useState,useRef} from "react";
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 
 import { Home } from "./components/Home";
-import { Login } from "./components/Login";
+import Login from "./components/Login";
 
-import { Calendar } from "./components/Calendar";
+import Calendar from "./components/Calendar";
 
 
 function App() {

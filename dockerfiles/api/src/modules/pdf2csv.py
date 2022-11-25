@@ -36,6 +36,8 @@ def pdf2csv():
     for df in dfs:
         df.to_csv("./modules/text/csv/gakunennreki.csv", index=None)    
     df_clean = preprocess_text()
+    for (ind,cont) in enumerate(list(df_clean['content'])):
+        df_clean['content'].iloc[ind] = cont.replace(" ","")
     #変換したデータをcsvに上書き
     df_clean.rename(columns={'content':'question'}, inplace=True)
     df_clean.rename(columns={'month_day1':'answer'}, inplace=True)

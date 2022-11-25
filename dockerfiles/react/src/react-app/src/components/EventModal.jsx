@@ -1,11 +1,13 @@
-import React, { useState, useContext } from "react";
-import { MdDeleteForever, MdClose } from "react-icons/md";
+import React, {useRef, useState, useContext } from "react";
+import { MdDeleteForever, MdClose, MdPhotoSizeSelectLarge } from "react-icons/md";
 import GlobalContext from "../context/GlobalContext";
+import axios from "axios";
+import dayjs from "dayjs";
 
-export const EventModal = () => {
-  const { daySelected, setShowEventModal, dispatchCalEvent, selectedEvent } =
-    useContext(GlobalContext);
+const EventModal = () => {
+  const { daySelected, setShowEventModal, dispatchCalEvent, selectedEvent } = useContext(GlobalContext);
   const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : "");
+  const host = process.env.REACT_APP_IP_ADDR
 
   const addAndModifSchedule = (e) => {
     // クリック時に送信するというdefaultの動作をキャンセルする
@@ -14,24 +16,76 @@ export const EventModal = () => {
       title: title,
       day: daySelected.valueOf(),
       id: selectedEvent ? selectedEvent.id : Date.now(),
+      uid:"1",
+      dayTime:daySelected.format("YYYY,dddd, MMMM DD"),
     };
+    //console.log(localStorage.getItem("savedEvents"));
+    //console.log(dayjs(daySelected.valueOf().day).format("DD-MM-YY"));
     if (selectedEvent) {
-      dispatchCalEvent({ type: "update", payload: calendarEvent });
-      console.log({calendarEvent});
+      if (updateRequestApi(calendarEvent) === 1){
+        dispatchCalEvent({ type: "update", payload: calendarEvent });
+      }else{
+        console.log("update error");
+      }
     } else {
-      dispatchCalEvent({ type: "push", payload: calendarEvent });
-      console.log({calendarEvent});
+      if (pushRequestApi(calendarEvent) === 1){
+        dispatchCalEvent({ type: "push", payload: calendarEvent });
+      }else{
+        console.log("push error");
+      }
     }
     setShowEventModal(false);
   };
 
   const deleteSchedule = () => {
     // クリック時に送信するというdefaultの動作をキャンセルする
-    //e.preventDefault();
-    console.log({selectedEvent});
-    dispatchCalEvent({ type: "delete", payload: selectedEvent });
+    if (deleteRequestApi(selectedEvent) === 1){
+        dispatchCalEvent({ type: "delete", payload: selectedEvent });
+    }else{
+        console.log("delete error");
+    }
+
     setShowEventModal(false);
   };
+  
+  const pushRequestApi = (cal) =>{
+      const baseURL = "http://" + host + ":10180/calendar/push/";
+      axios.post(baseURL,cal)
+          .then(res => {
+                if(res.data.res === "ok"){
+                    return 1;
+                }else{
+                    return 0;
+                }
+          })
+      return 1;
+  }
+
+  const updateRequestApi = (cal) =>{
+      const baseURL = "http://" + host + ":10180/calendar/update/";
+      axios.post(baseURL,cal)
+          .then(res => {
+                if(res.data.res === "ok"){
+                    return 1;
+                }else{
+                    return 0;
+                }
+          })
+      return 1;
+  }
+  
+  const deleteRequestApi = (cal) =>{
+      const baseURL = "http://" + host + ":10180/calendar/delete/";
+      axios.post(baseURL,cal)
+          .then(res => {
+                if(res.data.res === "ok"){
+                    return 1;
+                }else{
+                    return 0;
+                }
+          })
+      return 1;
+  }
 
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
@@ -76,4 +130,4 @@ export const EventModal = () => {
     </div>
   );
 };
-
+export default EventModal;
