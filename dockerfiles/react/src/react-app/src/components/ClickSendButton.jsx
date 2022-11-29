@@ -4,6 +4,8 @@ import { UserMess } from '../App'
 import MesPr from './MesPr';
 import axios from "axios"
 import {v4 as uuidv4 } from "uuid";
+
+import style from "./ClickSendButton.module.css"
                 
 const ClickSendButton = () =>{
     const question = useRef();
@@ -15,6 +17,7 @@ const ClickSendButton = () =>{
         setMessage((prev) =>{
             let a = [...prev] 
             a.push(refl.title)
+            a.push(<br></br>)
             return(
                 [...a]
             )
@@ -55,11 +58,18 @@ const ClickSendButton = () =>{
     }; 
     return(
         <div>
-            <MesPr mess={message}/>
-            <form onSubmit={click}>
-                <input type="text" placeholder="質問を入力"ref={question}/>
-            </form>      
-            <button onClick={click}>送信 ＞ </button>
+            <div>
+                <MesPr mess={message}/>
+            </div>
+
+            <div className={style.message}>
+                <form onSubmit={click}>
+                    <div >                    
+                        <input className={style.text} type="text" placeholder="質問を入力"ref={question}/>
+                        <button className={style.button} onClick={click}>送信 ＞ </button>                     
+                    </div>
+                </form>      
+            </div>
         </div>
     );
 };

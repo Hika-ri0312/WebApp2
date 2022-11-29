@@ -1,0 +1,41 @@
+.message {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.button{
+    
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1em 2em;
+    width: 300px;
+    color: rgb(31, 21, 21);
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #cccccc;
+    border: 3px dashed #1f3c48;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.text {
+    
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1em 2em;
+    width: 300px;
+    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #cccccc;
+    
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+  
+  
+
+  
