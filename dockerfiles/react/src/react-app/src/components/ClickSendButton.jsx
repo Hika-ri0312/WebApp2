@@ -5,6 +5,7 @@ import MesPr from './MesPr';
 import axios from "axios"
 import {v4 as uuidv4 } from "uuid";
 
+
 import style from "./ClickSendButton.module.css"
                 
 const ClickSendButton = () =>{
@@ -58,7 +59,7 @@ const ClickSendButton = () =>{
     }; 
     return(
         <div>
-            <div>
+            <div className={style.mesbox}>
                 <MesPr mess={message}/>
             </div>
 

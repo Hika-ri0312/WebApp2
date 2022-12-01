@@ -1,12 +1,17 @@
 import React from 'react'
 
+import style from "./MesPr.module.css"
+
+
 const MesPr = ({mess}) => {
     
     if (mess.length === 0) return;
     return mess.map((mes,index) => (
-        <div key={index}>
+        <div  key={index}>
             
-            {mes}
+            <a>{mes}</a>
+            
+            
         </div>
     ));
 }

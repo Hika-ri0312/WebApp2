@@ -35,6 +35,16 @@
     border-radius: 6px;
     transition: 0.3s;
   }
+
+.mesbox{
+    height: 400px;/*your_containerに対して100%になる */
+    width: 100%;/*your_containerに対して100%になる */
+    background-color: #eee;
+    border: solid 1px;
+    overflow: scroll;
+}
+
+
   
   
 
