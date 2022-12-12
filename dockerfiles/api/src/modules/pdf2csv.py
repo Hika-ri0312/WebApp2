@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import csv
 
-#PDFファイルパス
+source_url = "https://rais.skr.u-ryukyu.ac.jp/wordpress/wp-content/uploads/gakunenreki/R4_gakunenreki.pdf"
  
 def read_pdfs():
     dfs = tabula.read_pdf("./modules/text/gakunennreki/pdf/gakunennreki.pdf", stream=True,pages="all")
@@ -41,7 +41,8 @@ def pdf2csv():
     #変換したデータをcsvに上書き
     df_clean.rename(columns={'content':'question'}, inplace=True)
     df_clean.rename(columns={'month_day1':'answer'}, inplace=True)
-    df_clean.to_csv("./modules/text/csv/gakunennreki.csv",columns=['question','answer'])
+    df_clean = df_clean.assign(source=source_url)
+    df_clean.to_csv("./modules/text/csv/gakunennreki.csv",columns=['question','answer','source'])
  
 def main():
     dfs = read_pdfs()

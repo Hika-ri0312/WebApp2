@@ -38,8 +38,7 @@ services:
             IP_ADDR: ${IP_ADDR}
         volumes:
             - ./dockerfiles/react/src/:/usr/src/app
-        command: /bin/sh -c "cat react-app/template_env | sed s/ip_address/`echo $IP_ADDR`/ > react-app/.env"
-        command: /bin/sh -c "cd react-app &&yarn install && yarn run start"
+        command: /bin/sh -c "cat react-app/template_env | sed s/ip_address/`echo $IP_ADDR`/ > react-app/.env && cd react-app &&yarn install && yarn run start"
         ports:
           - 10280:10280
 

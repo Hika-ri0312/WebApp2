@@ -23,21 +23,36 @@ def cos_sim(v1,v2):
 
 def cos_distance(text1):
     vec1 = text_vector(text1)
-    qa_vec, qa_lists = zip(*conv.load_csv())
+    path = './modules/text/records.txt'
+    with open(path, mode='a') as f:
+        f.write(text1+"\n")
+    qa_vec, qa_qes, qa_lists, sources = zip(*conv.load_csv())
     angles = []
     for vec2 in qa_vec:
         angles.append(cos_sim(vec1,vec2))
-    idx = np.asarray(angles).argmax()
-    ret_ans = qa_lists[idx]
-    #print(vec1)
-    #print(qa_vec[idx])
-    #print(cos_sim(vec1,qa_vec[idx]))
-    if not(cos_sim(vec1,qa_vec[idx]) > 0.55):
-        ret_ans = "すみません、よくわかりません"
-    else:   
-        ret_ans = ret_ans + " です。"
+    ret_ans=[]
+    source=[]
+    for i in range(4):
+        idx = np.asarray(angles).argmax()
+        angles[idx] = 0;
+        if cos_sim(vec1,qa_vec[idx]) < 0.65 and i == 0:
+            ret_ans.append("すみません、よくわかりません")
+            source.append("")
+            ret_ans.append("該当なし")
+            source.append("")
+            ret_ans.append("該当なし")
+            source.append("")
+            ret_ans.append("該当なし")
+            source.append("")
+            break;
+        elif cos_sim(vec1,qa_vec[idx]) < 0.55:
+            ret_ans.append("該当なし")
+            source.append("")
+        else:   
+            ret_ans.append(qa_qes[idx] + "は" + qa_lists[idx] + " です。")
+            source.append("ソースは " + sources[idx] + " です。")
     
-    return ret_ans
+    return ret_ans, source
 
 
     
