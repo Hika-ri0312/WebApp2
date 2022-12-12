@@ -14,11 +14,32 @@ const ClickSendButton = () =>{
     const [refl, setRefl] = React.useState([]);
     let inputMess
     useEffect(() => {
+        console.log(message.length)
         if(message.length === 0) return;
         setMessage((prev) =>{
             let a = [...prev] 
             a.push(refl.title)
+            a.push(refl.source)
             a.push(<br></br>)
+            if(refl.source != ""){
+                if(refl.source1 != "") {
+                    a.push("もしかして、こっち？")
+                    a.push("その1")
+                    a.push(refl.title1)
+                    a.push(refl.source1)
+                    if(refl.source2 != "") {
+                        a.push("その2")
+                        a.push(refl.title2)
+                        a.push(refl.source2)
+                        if(refl.source3 != "") {
+                            a.push("その3")
+                            a.push(refl.title3)
+                            a.push(refl.source3)
+                        }
+                    }
+                }
+            }
+
             return(
                 [...a]
             )
@@ -46,6 +67,7 @@ const ClickSendButton = () =>{
         event.preventDefault();
         const name = question.current.value;
         if(name === "") return;
+        setMessage([])
         setMessage((prev) =>{
             let a = [...prev] 
             a.push(name)
@@ -59,7 +81,7 @@ const ClickSendButton = () =>{
     }; 
     return(
         <div>
-            <div className={style.mesbox}>
+            <div className={style.messagesText}>
                 <MesPr mess={message}/>
             </div>
 

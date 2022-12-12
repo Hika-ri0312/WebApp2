@@ -1,10 +1,4 @@
-.scroll{
-  overflow: auto;
-  scroll-snap-type: y mandatory;
-  height: 100vh;
-}
-
-.scroll a{
-    scroll-snap-align: start;
-    height: 100vh;
+.mesPr{
+    color: skyblue;
+    text-decoration: none;
 }

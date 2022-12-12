@@ -24,12 +24,13 @@ def load_csv():
     file = glob.glob("./modules/text/csv/*")
     qa_lists = pd.DataFrame(
         data={'question': [], 
-              'answer': []
+              'answer': [],
+              'source': []
               }
     )
     for path in file:
         read_qa_list = pd.read_csv(path)
-        qa_lists=pd.merge(qa_lists,read_qa_list,how="outer", on = ['question','answer'])
+        qa_lists=pd.merge(qa_lists,read_qa_list,how="outer", on = ['question','answer','source'])
 
     qa_vec = []
     qa_list = qa_lists['question']
@@ -37,7 +38,7 @@ def load_csv():
     for qa in qa_list:
         qa_vec.append(text_vector(qa))
 
-    qa_list_zip = zip(list(qa_vec), list(qa_lists["answer"]))
+    qa_list_zip = zip(list(qa_vec), list(qa_lists["question"]), list(qa_lists["answer"]), list(qa_lists["source"]))
 
     return qa_list_zip
     

@@ -21,8 +21,16 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS qbo.schedule(
     day CHAR(255) NOT NULL,
     dayId CHAR(255) NOT NULL,
     uid CHAR(255) NOT NULL,
-    dayTime TEXT NOT NULL
+    dayTime TEXT NOT NULL,
+    source TEXT NOT NULL
     )""")
+query = 'SELECT title,dayTime,source FROM schedule'
+data_list = []
+cursor.execute(query)
+for (title,dayTime,source) in cursor:
+    data_list.append([title,dayTime,source])
+df = pd.DataFrame( data_list ,columns=['question','answer','source'])
+df.to_csv("./modules/text/csv/schedule.csv", index=None)   
 connection.commit()
 connection.close()
 
@@ -61,11 +69,11 @@ def mysqlUpdate(content):
     dayTime   = content["dayTime"] 
     cursor.execute("UPDATE schedule set title = %s where day = %s and dayId = %s and uid = %s and dayTime = %s",(title,dayId,titleId,uid,dayTime))
     data_list = []
-    query = 'SELECT title,dayTime FROM schedule'
+    query = 'SELECT title,dayTime,source FROM schedule'
     cursor.execute(query)
-    for (title,dayTime) in cursor:
-        data_list.append([title,dayTime])
-    df = pd.DataFrame( data_list ,columns=['question','answer'])
+    for (title,dayTime,source) in cursor:
+        data_list.append([title,dayTime,source])
+    df = pd.DataFrame( data_list ,columns=['question','answer','source'])
     df.to_csv("./modules/text/csv/schedule.csv", index=None)   
     connection.commit()
     connection.close()
@@ -77,13 +85,14 @@ def mysqlPush(content):
     dayId   = content["day"] 
     uid   = content["uid"] 
     dayTime   = content["dayTime"] 
-    cursor.execute("INSERT INTO schedule VALUES (0,%s,%s,%s,%s,%s)",(title,dayId,titleId,uid,dayTime))
-    query = 'SELECT title,dayTime FROM schedule'
+    source = "user1" + "さん"
+    cursor.execute("INSERT INTO schedule VALUES (0,%s,%s,%s,%s,%s,%s)",(title,dayId,titleId,uid,dayTime,source))
+    query = 'SELECT title,dayTime,source FROM schedule'
     cursor.execute(query)
     data_list = []
-    for (title,dayTime) in cursor:
-        data_list.append([title,dayTime])
-    df = pd.DataFrame( data_list ,columns=['question','answer'])
+    for (title,dayTime,source) in cursor:
+        data_list.append([title,dayTime,source])
+    df = pd.DataFrame( data_list ,columns=['question','answer','source'])
     df.to_csv("./modules/text/csv/schedule.csv", index=None)   
     connection.commit()
     connection.close()
@@ -96,12 +105,12 @@ def mysqlDel(content):
     uid   = content["uid"] 
     dayTime   = content["dayTime"] 
     cursor.execute("DELETE FROM schedule WHERE title = %s and day = %s and dayId = %s and uid = %s and dayTime = %s",(title,dayId,titleId,uid,dayTime))
-    query = 'SELECT title,dayTime FROM schedule'
+    query = 'SELECT title,dayTime,source FROM schedule'
     cursor.execute(query)
     data_list = []
-    for (title,dayTime) in cursor:
-        data_list.append([title,dayTime])
-    df = pd.DataFrame( data_list ,columns=['question','answer'])
+    for (title,dayTime,source) in cursor:
+        data_list.append([title,dayTime,source])
+    df = pd.DataFrame( data_list ,columns=['question','answer','source'])
     df.to_csv("./modules/text/csv/schedule.csv", index=None)   
     connection.commit()
     connection.close()

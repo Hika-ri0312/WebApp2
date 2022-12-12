@@ -10,9 +10,16 @@ app.config['JSON_AS_ASCII'] = False
 @app.route('/', methods=['POST'])
 def post_json():
     reqJson = request.get_json()["title"]
-    resMes = jus.cos_distance(reqJson) 
+    resMes, source= jus.cos_distance(reqJson) 
     ref = {
-        "title":resMes,
+        "title":resMes[0],
+        "source":source[0],
+        "title1":resMes[1],
+        "source1":source[1],
+        "title2":resMes[2],
+        "source2":source[2],
+        "title3":resMes[3],
+        "source3":source[3],
     }
     return jsonify(ref)
 
