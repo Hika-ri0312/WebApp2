@@ -4,7 +4,7 @@
 
 - ``` docker-compose.yml ``` ファイルがあるディレクトリで以下の操作を行なってください。  
     - ``` 
-        docker-compose build
+        DOCKER_BUILDKIT=1 docker-compose build
         docker-compose up -d 
       ``` 
 ## Notes
