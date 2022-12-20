@@ -2,3 +2,4 @@
 /dockerfiles/api/src/modules/text/records.txt
 dockerfiles/api/src/__pycache__/
 /dockerfiles/db/mysql/
+__pycache__
