@@ -8,3 +8,5 @@ tabula-py
 ginza
 ja_ginza
 mysqlclient
+mecab-python3
+ipadic

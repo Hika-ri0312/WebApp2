@@ -5,14 +5,14 @@ import math
 nlp  = spacy.load('ja_ginza')
 
 
-def text_vector(text):
-    doc = nlp(text)
+#def text_vector(text):
+#    doc = nlp(text)
     #for token in doc:  # Token単位で処理結果を参照。
     #    print(token.i, token.lemma_, token.pos_)
 
-    vec = doc.vector
+#    vec = doc.vector
     
-    return vec
+#    return vec
 
 def cos_sim(v1,v2):
     ret = np.dot(v1,v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
@@ -21,8 +21,15 @@ def cos_sim(v1,v2):
     else:
         return ret
 
+def conv_word(text):
+    text = text.replace("夏休み","夏季休業")
+    text = text.replace("春休み","春季休業")
+    text = text.replace("冬休み","冬季休業")
+    return text
+
 def cos_distance(text1):
-    vec1 = text_vector(text1)
+    text1 = conv_word(text1)
+    vec1 = conv.text_vector(text1)
     path = './modules/text/records.txt'
     with open(path, mode='a') as f:
         f.write(text1+"\n")

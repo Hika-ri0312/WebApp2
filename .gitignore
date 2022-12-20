@@ -1,3 +1,5 @@
 /dockerfiles/react/src/react-app/node_modules/
 /dockerfiles/api/src/modules/text/records.txt
+dockerfiles/api/src/__pycache__/
 /dockerfiles/db/mysql/
+__pycache__
