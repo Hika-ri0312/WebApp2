@@ -3,7 +3,6 @@ import React from 'react'
 import reactStringReplace from "react-string-replace";
 import style from "./MesPr.module.css"
 const regExp = /(https?:\/\/\S+)/g;
-import style from "./MesPr.module.css"
 
 
 const MesPr = ({mess}) => {

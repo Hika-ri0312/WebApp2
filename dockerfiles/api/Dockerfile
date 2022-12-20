@@ -14,7 +14,6 @@ ENV TZ JST-9
 ENV TERM xterm
 
 RUN mkdir -p /root/src
-COPY requirements.txt /root/src
 WORKDIR /root/src
 
 RUN apt install gcc
@@ -23,6 +22,7 @@ ENV PATH "/root/.cargo/bin:$PATH"
 
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
+COPY requirements.txt /root/src
 RUN pip install -r requirements.txt
 
 
