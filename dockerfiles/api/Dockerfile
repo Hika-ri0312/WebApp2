@@ -1,6 +1,9 @@
+# syntax = docker/dockerfile:experimental
 FROM python:latest
 USER root
 
+# apt mirror の変更(https://vividcode.hatenablog.com/entry/docker/docker-build-add-host)
+RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get -y install locales && \
     localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
@@ -23,6 +26,4 @@ ENV PATH "/root/.cargo/bin:$PATH"
 
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
-RUN pip install -r requirements.txt
-
-
+RUN --mount=type=cache,mode=0755,target=/root/.cache/pip pip install -r requirements.txt
