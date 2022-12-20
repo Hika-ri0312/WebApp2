@@ -48,7 +48,7 @@
     position: relative;
     display: inline-block;
     width: 50%;                
-    //height: 30%;              
+    height: 30%;              
     max-height: 45vh;
     border: 1px solid #000;  
     overflow-y: scroll;     

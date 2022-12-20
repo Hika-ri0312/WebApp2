@@ -4,7 +4,6 @@ import reactStringReplace from "react-string-replace";
 import style from "./MesPr.module.css"
 const regExp = /(https?:\/\/\S+)/g;
 
-
 const MesPr = ({mess}) => {
     
     if (mess.length === 0) return;
