@@ -10,3 +10,6 @@ ja_ginza
 mysqlclient
 mecab-python3
 ipadic
+pdfplumber
+requests
+bs4
