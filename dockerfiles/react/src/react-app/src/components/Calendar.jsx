@@ -46,6 +46,7 @@ const Calendar = () => {
                 <div className="flex flex-1">
                 
                 <Month month={currentMonth} />
+                
                 </div>
             </div>
             <div>
