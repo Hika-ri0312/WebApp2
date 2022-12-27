@@ -90,7 +90,6 @@ def get_class_schedule(file_name):
                 ans = ans + f"{a_lists[l]}は{b_lists[l]}"
                 if l != len(a_lists)-1:
                     ans = ans+"、" 
-            ans = ans + "です。"
             quss.append(qes)
             anss.append(ans)
             sources.append(source)
