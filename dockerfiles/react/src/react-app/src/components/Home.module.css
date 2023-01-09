@@ -1,7 +1,40 @@
 .home{
-    width: 150px;
-    height: 150px;
-    position:relative;
-    top: 50px;
-    left:50px;
+    width: auto;
+    height: max-content;
+    
+    
+    background-color: #37e1f4;
+}
+
+.flex_test_box {
+    /* background-color: #fff;     背景色指定 */
+    /* padding:  10px;             余白指定 */
+    display: flex;              /* フレックスボックスにする */
+    flex-wrap: wrap;            /* 折り返し指定 */
+}
+
+.flex_test_item {
+    /* padding: 10px; */
+    /* color:  #fff;               文字色 */
+    margin:  10px;              /*外側の余白 */
+    border-radius:  5px;        /* 角丸指定 */
+              /* 文字サイズ */
+                   /* 幅指定 */
+    text-align:  center;        /* 文字中央揃え */
+}
+ 
+.flex_test_item:nth-child(1) {
+    /* background-color:  #fff; 背景色指定 */
+    /* flex-grow: 0.7;               幅指定 */
+    font-size:  auto;
+    flex-basis: 65%;
+}
+ 
+.flex_test_item:nth-child(2) {
+    background-color:  #37e1f4; /* 背景色指定 */
+    width: auto;/*auto*/
+    font-size:  auto;
+    /* flex-grow: 0.3;   */
+    flex-basis: auto;
+    
 }

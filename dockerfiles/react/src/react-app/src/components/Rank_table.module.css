@@ -1,0 +1,16 @@
+table,td,th {
+    width: auto; /*auto */
+    height:max-content;
+    table-layout: fixed;
+    border:1.5px #7e7e7e solid;
+    position:relative;
+	/* top: 50px; 
+	left:200px; */
+    color: #000;
+    
+}
+
+th { 
+    background: #fbfbfb; 
+    color: #000;
+}
