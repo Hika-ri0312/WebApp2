@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import modules.judge_spacy  as jus
 import modules.mysql_conn as mysql
+import modules.get_rank as rank
 
 app = Flask(__name__)
 
@@ -58,5 +59,15 @@ def get_json():
     reqJson = request.get_json()
     print(reqJson)
     return jsonify(mysql.mysqlList(reqJson))
+
+@app.route('/rank_table/get/',methods=['GET'])
+def get_rank():
+    ranking = rank.get_rank() 
+    ref = {
+        "res1":ranking[-1],
+        "res2":ranking[-2],
+        "res3":ranking[-3],
+    }
+    return jsonify(ref)
 if __name__ == '__main__':
     app.run()

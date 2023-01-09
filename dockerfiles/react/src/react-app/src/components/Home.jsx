@@ -1,9 +1,14 @@
-import React from "react";
+// import React from "react";
 import InitComment from "./InitComment";
 import ClickSendButton from "./ClickSendButton";
 
+import Rank_table from "./Rank_table";
+
+import React, {useRef, useState, useContext} from "react";
+import axios from "axios";
 
 
+import style from "./Home.module.css"
 import "../App.css";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -11,6 +16,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom"
+import { useEffect } from "react";
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,7 +37,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const Home = () => {
-    
     const classes = useStyles();
     const navigate = useNavigate()
 
@@ -52,9 +58,18 @@ export const Home = () => {
             {/* <div className={style.home}>
                 <Link to="/login">Login</Link>
             </div> */}
-
+            
             <InitComment />
-            <ClickSendButton />
+            
+            <div className={style.flex_test_box}>
+                <div className={style.flex_test_item}>
+                    <ClickSendButton />
+                </div>
+                <div className={style.flex_test_item}>
+                    <Rank_table/>
+                </div>
+            </div>
+            
         </div>
     );
   };
