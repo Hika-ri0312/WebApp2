@@ -16,7 +16,7 @@
 .flex_test_item {
     /* padding: 10px; */
     /* color:  #fff;               文字色 */
-    margin:  10px;              /*外側の余白 */
+    margin:  50px;              /*外側の余白 */
     border-radius:  5px;        /* 角丸指定 */
               /* 文字サイズ */
                    /* 幅指定 */
@@ -27,7 +27,7 @@
     /* background-color:  #fff; 背景色指定 */
     /* flex-grow: 0.7;               幅指定 */
     font-size:  auto;
-    flex-basis: 65%;
+    flex-basis: 45%;
 }
  
 .flex_test_item:nth-child(2) {
