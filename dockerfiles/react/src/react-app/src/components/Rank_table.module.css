@@ -11,6 +11,7 @@ table,td,th {
 }
 
 th { 
-    background: #fbfbfb; 
+    background-color:  #37e1f4;
+    /* background: #fbfbfb;  */
     color: #000;
 }
