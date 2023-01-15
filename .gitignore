@@ -4,3 +4,4 @@ dockerfiles/api/src/__pycache__/
 /dockerfiles/db/mysql/
 __pycache__
 __MACOSX
+node_modules
