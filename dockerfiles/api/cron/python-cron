@@ -1,0 +1,6 @@
+LANG=ja_JP.UTF-8
+PATH=/root/.cargo/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PYTHONPATH=/root/src
+0 0 6 4 * /script.sh >> /var/log/cron.log
+0 0 26 9 * /script.sh >> /var/log/cron.log
+
