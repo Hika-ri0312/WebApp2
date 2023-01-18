@@ -10,7 +10,7 @@ import ipadic
 
 
 nlp  = spacy.load('ja_ginza')
-p2c.pdf2csv()
+p2c.pdf2csv(0)
 
 
 def text_vector(text):

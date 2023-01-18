@@ -24,7 +24,7 @@ services:
         tty: true
         volumes:
             - ./dockerfiles/api/src/:/root/src
-        command: sh -c "flask --debug run -h api -p 9000"
+        command: sh -c "/etc/init.d/cron restart && flask --debug run -h api -p 9000"
         expose:
             - "9000"
         depends_on:
