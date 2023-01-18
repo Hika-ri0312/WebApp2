@@ -8,6 +8,7 @@ import { Home } from "./components/Home";
 import Login from "./components/Login";
 
 import Calendar from "./components/Calendar";
+import Register from "./components/register";
 
 
 
@@ -17,16 +18,12 @@ function App() {
 
         <div>
             <BrowserRouter>
-                
-                    
-
                 <Routes>
                     <Route path='/' element={<Home/>} />
                     <Route path='/login' element={<Login/>} />
-
+                    <Route path='/register' element={<Register/>} />
                     <Route path='/calendar' element={<Calendar/>} />
-                </Routes>
-                
+                </Routes>  
             </BrowserRouter>
 
             

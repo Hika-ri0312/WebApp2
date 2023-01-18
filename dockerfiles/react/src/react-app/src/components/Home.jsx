@@ -50,6 +50,7 @@ export const Home = () => {
                     <Typography variant="h6" className={classes.title}>
                         Q-bo
                     </Typography>
+                    <Button onClick={() => navigate('/register')} color="inherit">Register</Button>
                     <Button onClick={() => navigate('/login')} color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
