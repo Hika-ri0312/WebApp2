@@ -28,11 +28,11 @@ function Register() {
             <meta charSet="UTF-8" />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Register Page</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous" />
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
                     <button className="navbar-brand" onClick={() => navigate('/')}>Register Page</button>
+                    <button className="navbar-brand text-white" onClick={() => navigate('/login')}>Login</button>
                     {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon" />
                     </button>
@@ -58,9 +58,8 @@ function Register() {
                         {/* <form onsubmit="return false;" id="form"> */}
                         <form onSubmit={handleSubmit} id="form">
                             <div className="mb-3">
-                                <label htmlFor="email" className="form-label">Email address</label>
-                                <input type="email" className="form-control" id="email" aria-describedby="emailHelp" autoComplete="off" required />
-                                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                                <label htmlFor="email" className="form-label">User ID</label>
+                                <input className="form-control" id="email" aria-describedby="emailHelp" autoComplete="off" required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="password" className="form-label">Password</label>

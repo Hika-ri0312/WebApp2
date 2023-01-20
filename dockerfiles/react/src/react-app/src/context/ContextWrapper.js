@@ -11,6 +11,8 @@ const saveEventsReducer = (state, { type, payload }) => {
       return state.map((evt) => (evt.id === payload.id ? payload : evt));
     case "delete":
       return state.filter((evt) => evt.id !== payload.id);
+    case "allDel":
+      return [];
     default:
       throw new Error();
   }
