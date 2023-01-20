@@ -81,7 +81,7 @@ const ClickSendButton = () =>{
     }; 
     return(
         <div>
-            <div className={style.messagesText}>
+            <div className={style.balloon1_left}>
                 <MesPr mess={message}/>
             </div>
 
@@ -89,7 +89,7 @@ const ClickSendButton = () =>{
                 <form onSubmit={click}>
                     <div >                    
                         <input className={style.text} type="text" placeholder="質問を入力"ref={question}/>
-                        <button className={style.button} onClick={click}>送信 ＞ </button>                     
+                        <button className={style.flat_border} onClick={click}>送信 ＞ </button>                     
                     </div>
                 </form>      
             </div>
