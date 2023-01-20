@@ -14,7 +14,7 @@ const ClickSendButton = () =>{
     const [refl, setRefl] = React.useState([]);
     let inputMess
     useEffect(() => {
-        console.log(message.length)
+        // console.log(message.length)
         if(message.length === 0) return;
         setMessage((prev) =>{
             let a = [...prev] 

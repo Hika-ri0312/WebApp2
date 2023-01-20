@@ -51,7 +51,8 @@ def mysqlUpdate(content):
 def mysqlList(content):
     cursor,connection = mysqlInit()
     uid = content["uid"]
-    cursor.execute("select title,day,dayId,uid,dayTime from schedule where uid = %s",uid)
+    print(uid)
+    cursor.execute("select title,day,dayId,uid,dayTime from schedule where uid = %s",[uid])
     print(cursor)
     returnDict = {}
     returnDict["cont"] = []
