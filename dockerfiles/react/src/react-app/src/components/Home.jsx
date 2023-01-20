@@ -18,6 +18,8 @@ import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 
+import background from "../sky.png";
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -59,6 +61,15 @@ export const Home = () => {
             {/* <div className={style.home}>
                 <Link to="/login">Login</Link>
             </div> */}
+
+            <div style={{ backgroundImage: `url(${background})`,
+              backgroundPosition: 'center',
+              backgroundTepeat: 'no-repeat',
+              backgroundSize: 'cover' ,
+              height:'900px'
+              }}>
+      
+    
             
             <InitComment />
             
@@ -71,6 +82,7 @@ export const Home = () => {
                 </div>
             </div>
             
+            </div>
         </div>
     );
   };
