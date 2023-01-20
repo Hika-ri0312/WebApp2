@@ -13,3 +13,4 @@ ipadic
 pdfplumber
 requests
 bs4
+flask_restful
