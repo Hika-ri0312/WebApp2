@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export const Home = () => {
     const classes = useStyles();
     const navigate = useNavigate()
+    const [text, setText] = useState("");
 
     return (
         <div>
@@ -64,10 +65,10 @@ export const Home = () => {
             
             <div className={style.flex_test_box}>
                 <div className={style.flex_test_item}>
-                    <ClickSendButton />
+                    <ClickSendButton conIn={text}/>
                 </div>
                 <div className={style.flex_test_item}>
-                    <Rank_table/>
+                    <Rank_table conIn={setText}/>
                 </div>
             </div>
             
