@@ -30,7 +30,7 @@ const ClickSendButton = (props) =>{
 
     let inputMess
     useEffect(() => {
-        console.log(message.length)
+        // console.log(message.length)
         if(message.length === 0) return;
         setMessage((prev) =>{
             let a = [...prev] 
@@ -97,7 +97,7 @@ const ClickSendButton = (props) =>{
     }; 
     return(
         <div>
-            <div className={style.messagesText}>
+            <div className={style.balloon1_left}>
                 <MesPr mess={message}/>
             </div>
 
@@ -105,7 +105,7 @@ const ClickSendButton = (props) =>{
                 <form onSubmit={click}>
                     <div >                    
                         <input className={style.text} type="text" placeholder="質問を入力"ref={question}/>
-                        <button className={style.button} onClick={click}>送信 ＞ </button>                     
+                        <button className={style.flat_border} onClick={click}>送信 ＞ </button>                     
                     </div>
                 </form>      
             </div>

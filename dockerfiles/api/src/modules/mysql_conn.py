@@ -1,6 +1,8 @@
 import MySQLdb
 import csv
 import pandas as pd
+from flask import abort
+
 
 connection = MySQLdb.connect(
     host='mysql',
@@ -49,12 +51,17 @@ def mysqlUpdate(content):
     pass
 
 def mysqlList(content):
-    cursor,connection = mysqlInit()
-    uid = content["uid"]
-    cursor.execute("select title,day,dayId,uid,dayTime from schedule where uid = %s",uid)
-    print(cursor)
     returnDict = {}
     returnDict["cont"] = []
+    cursor,connection = mysqlInit()
+    print(content)
+    if(not(any(content))):
+        #returnDict["cont"].append({"title":"bad","day":"","id":"","uid":"","dayTime":""})
+        return { 'message': 'Unknown code' }, 400
+    uid = content["uid"]
+    print(uid)
+    cursor.execute("select title,day,dayId,uid,dayTime from schedule where uid = %s",[uid])
+    print(cursor)
     for ind,(title, day, dayId,uid,dayTime) in enumerate(cursor):
         returnDict["cont"].append({"title":title,"day":int(day),"id":int(dayId),"uid":uid,"dayTime":dayTime})
     print(returnDict)
