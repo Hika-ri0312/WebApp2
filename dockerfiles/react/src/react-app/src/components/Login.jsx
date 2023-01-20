@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { Home } from "./Home";
 import { useNavigate, BrowserRouter, Link, Routes, Route } from "react-router-dom";
+// import { useState } from 'react';
 
 const Login = () => {
     const navigate = useNavigate();
+    // const [data, setData] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
         const baseURL = "http://localhost:8080/api/login";
@@ -12,10 +14,15 @@ const Login = () => {
             "password": e.target[1].value,
         })
         .then(res => {
+            // console.log(e.target[0].value);
             if (res.data.status == "error"){
                 console.log("error");
             } else {
-                navigate('/calendar');
+                navigate('/calendar', {
+                    state: {email : e.target[0].value}
+                });
+                // setData(e.target[0].value);
+                // console.log(data);
             }
         })
     }
