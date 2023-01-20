@@ -32,7 +32,8 @@ def cos_distance(text1):
     vec1 = conv.text_vector(text1)
     path = './modules/text/records.txt'
     with open(path, mode='a') as f:
-        f.write(text1+"\n")
+        if not(text1 == ""):
+            f.write(text1.replace("\n","")+"\n")
     qa_vec, qa_qes, qa_lists, sources = zip(*conv.load_csv())
     angles = []
     for vec2 in qa_vec:

@@ -64,9 +64,11 @@ def get_json():
 def get_rank():
     ranking = rank.get_rank() 
     ref = {
-        "res1":ranking[-1],
-        "res2":ranking[-2],
-        "res3":ranking[-3],
+        "res1":ranking[0],
+        "res2":ranking[1],
+        "res3":ranking[2],
+        "res4":ranking[3],
+        "res5":ranking[4],
     }
     return jsonify(ref)
 if __name__ == '__main__':
