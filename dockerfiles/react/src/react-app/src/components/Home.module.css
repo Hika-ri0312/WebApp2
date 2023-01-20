@@ -25,9 +25,10 @@
  
 .flex_test_item:nth-child(1) {
     /* background-color:  #fff; 背景色指定 */
-    /* flex-grow: 0.7;               幅指定 */
+    /* flex-grow: 0.1;               幅指定 */
     font-size:  auto;
     flex-basis: 45%;
+    
 }
  
 .flex_test_item:nth-child(2) {
