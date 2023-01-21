@@ -1,7 +1,7 @@
 .balloon1_left {
     position: relative;
     display: inline-block;
-    margin: 1.5em 0 1.5em 10px;
+    margin: 1.5em 0 0.5em 10px;
     padding: 0.1px 10px;
     width: 300px;
     color: #555;
@@ -9,6 +9,7 @@
     background: #e0edff;
     border-radius: 10px;
     left:30px; 
+    text-align:  left; 
 
     /* アニメーション */
     animation-name: fadeInAnime;
@@ -36,9 +37,9 @@
     position: absolute;
     top: 30%;
     left: -30px;
-    margin-top: -15px;
-    border: 15px solid transparent;
-    border-right: 15px solid #e0edff;
+    margin-top: -10px;
+    border: 13px solid transparent;
+    border-right: 20px solid #e0edff;
   }
   
   .balloon1_left p {
@@ -46,4 +47,51 @@
     padding: 0;
   }
 
+.balloon2_left {
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0 0.5em 10px;
+    padding: 0.1px 10px;
+    width: 300px;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+    border-radius: 10px;
+    left:30px; 
+    text-align:  left; 
 
+    /* アニメーション */
+    animation-name: fadeInAnime;
+    animation-fill-mode:backwards;
+    animation-duration:0.1s;
+    animation-timing-function:ease;
+    animation-delay: 2.0s;
+    animation-direction:normal;
+}
+
+@keyframes fadeInAnime{
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+  
+
+  .balloon2_left:before {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: -30px;
+    margin-top: -10px;
+    border: 13px solid transparent;
+    border-right: 20px solid #e0edff;
+  }
+  
+  .balloon2_left p {
+    margin: 0;
+    padding: 0;
+  }

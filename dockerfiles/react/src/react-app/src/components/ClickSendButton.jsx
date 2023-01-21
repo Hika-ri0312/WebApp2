@@ -12,6 +12,7 @@ const ClickSendButton = () =>{
     const question = useRef();
     const [message, setMessage] = React.useState([]);
     const [refl, setRefl] = React.useState([]);
+    const [visible, setVisible] = useState(false);
     let inputMess
     useEffect(() => {
         console.log(message.length)
@@ -78,24 +79,34 @@ const ClickSendButton = () =>{
         question.current.value = null;
         inputMess=name
         Requestapi()
+
+        setVisible(true)
+
     }; 
+
+
     return(
         <div>
-            <div className={style.balloon1_left}>
-                <MesPr mess={message}/>
+            <div style={{ visibility: visible ? "visible" : "hidden" }}>
+                <div className={style.balloon1_left}>
+                    <MesPr mess={message}/>
+                </div>
             </div>
-
+            
+            
             <div className={style.message}>
                 <form onSubmit={click}>
-                    <div >                    
-                        <input className={style.text} type="text" placeholder="質問を入力"ref={question}/>
-                        <button className={style.flat_border} onClick={click}>送信 ＞ </button>                     
+                    <div>                    
+                        <input className={style.text} type="text" placeholder="質問を入力"ref={question} />
+                        <button  className={style.flat_border} onClick={click}>送信 ＞ </button> 
+                                            
                     </div>
                 </form>      
             </div>
         </div>
     );
 };
+
 
 export default ClickSendButton;
 
