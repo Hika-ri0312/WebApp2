@@ -14,6 +14,7 @@ const ClickSendButton = (props) =>{
     const [reflmes, setReflmes] = React.useState([]);
     const [refl, setRefl] = React.useState([]);
     const [visible, setVisible] = useState(false);
+    const [visible_q, setVisible_q] = useState(false);
 
     useEffect(() =>{
         const name = props.conIn
@@ -28,6 +29,8 @@ const ClickSendButton = (props) =>{
         });
         question.current.value = null;
         inputMess=name
+        setVisible(false)
+        setVisible_q(true)
         Requestapi()
     },[props.conIn])
 
@@ -99,6 +102,8 @@ const ClickSendButton = (props) =>{
         });
         question.current.value = null;
         inputMess=name
+        setVisible(false)
+        setVisible_q(true)
         Requestapi()
 
 
@@ -107,8 +112,15 @@ const ClickSendButton = (props) =>{
 
     return(
         <div>
-            <div style={{ visibility: visible ? "visible" : "hidden" }}>
+            
+            <div style={{ visibility: visible_q ? "visible" : "hidden" }}>
                 <div className={style.balloon1_left}>
+                    <MesPr mess={message}/>
+                </div>
+            </div>
+
+            <div style={{ visibility: visible ? "visible" : "hidden" }}>
+                <div className={style.balloon3_left}>
                     <MesPr mess={reflmes}/>
                 </div>
             </div>

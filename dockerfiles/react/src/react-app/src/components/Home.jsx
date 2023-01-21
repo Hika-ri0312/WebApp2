@@ -69,14 +69,27 @@ export const Home = () => {
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover' ,
               height:'auto',
-              minHeight:'750px'
+              minHeight:'1200px',
+              
               
               }}>
-      
-    
-            
-            
-            
+              
+              {/* <div className={style.box_parent}>
+                <div className={style.box_child}>
+                  <InitComment />
+                </div>
+                <div className={style.box_child}>
+                  <div className={style.balloon1_left}>
+                    <Rank_table conIn={setText}/>
+                  </div>
+                </div>
+                <div className={style.box_childs}>
+                  <ClickSendButton conIn={text}/>
+                </div>
+              </div> */}
+
+                 
+
               <div className={style.flex_test_box}>
                 <div className={style.flex_test_item}>
                     <InitComment />  
@@ -84,6 +97,10 @@ export const Home = () => {
                 </div>
                 <div className={style.flex_test_item}>
                     <Rank_table conIn={setText}/>
+                </div>
+
+                <div className={style.flex_test_item}>
+                                    
                 </div>
                 
               </div>
