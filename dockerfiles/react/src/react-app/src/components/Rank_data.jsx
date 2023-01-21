@@ -31,8 +31,8 @@ export const Rank_data = () => {
 
 
 export const columns = [
-    { Header: "検索順", accessor: "rank" },
-    { Header: "過去の検索文", accessor: "sentence" },
+    { Header: "順位", accessor: "rank" },
+    { Header: "検索文ランキング", accessor: "sentence" },
   ];
   
 // export const data = () => [
