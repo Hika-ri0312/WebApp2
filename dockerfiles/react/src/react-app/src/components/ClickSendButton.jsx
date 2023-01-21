@@ -36,8 +36,8 @@ const ClickSendButton = (props) =>{
         // console.log(message.length)
         if(message.length === 0) return;
         setReflmes((prev) =>{
-            // let a = [...prev] 
-            let a = []
+            let a = [] 
+            //let a = [...prev] 
             a.push(refl.title)
             a.push(refl.source)
             a.push(<br></br>)
@@ -75,11 +75,13 @@ const ClickSendButton = (props) =>{
                 setRefl(res.data)
             })
 */
+        console.log(inputMess)
         axios.post(baseURL, {
             "title": inputMess,
         })
             .then(res => {
                 setRefl(res.data)
+                setVisible(true)
             })
     }
 
@@ -99,7 +101,6 @@ const ClickSendButton = (props) =>{
         inputMess=name
         Requestapi()
 
-        setVisible(true)
 
     }; 
 

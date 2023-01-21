@@ -91,7 +91,7 @@ export const Home = () => {
               <center>
                      
                 <div className={style.mesform}>
-                  <ClickSendButton />
+                  <ClickSendButton conIn={text}/>
                 </div>
             
               </center>
