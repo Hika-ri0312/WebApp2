@@ -2,8 +2,6 @@ import React from "react"
 
 import style from "./InitComment.module.css"
 
-import background from "../sky.png";
-
 const InitComment = ({}) =>{
     return(
         <div>
