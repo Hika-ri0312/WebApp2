@@ -18,7 +18,7 @@ export const Rank_data = () => {
         axios.get(baseURL)
             .then(res => {
                 
-                setRefl([...refl,res.data.res1,res.data.res2,res.data.res3])
+                setRefl([...refl,res.data.res1,res.data.res2,res.data.res3,res.data.res4,res.data.res5])
             })
     }
     

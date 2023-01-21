@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { Home } from "./Home";
 import { useNavigate, BrowserRouter, Link, Routes, Route } from "react-router-dom";
+// import { useState } from 'react';
 
 const Login = () => {
     const navigate = useNavigate();
+    // const [data, setData] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
         const baseURL = "http://localhost:8080/api/login";
@@ -12,10 +14,15 @@ const Login = () => {
             "password": e.target[1].value,
         })
         .then(res => {
+            // console.log(e.target[0].value);
             if (res.data.status == "error"){
                 console.log("error");
             } else {
-                navigate('/calendar');
+                navigate('/calendar', {
+                    state: {email : e.target[0].value}
+                });
+                // setData(e.target[0].value);
+                // console.log(data);
             }
         })
     }
@@ -25,7 +32,6 @@ const Login = () => {
             <meta charSet="UTF-8" />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Login Page</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous" />
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
@@ -55,8 +61,8 @@ const Login = () => {
                         <h5 className="card-title">Login form</h5>
                         <form onSubmit={handleSubmit} id="form">
                             <div className="mb-3">
-                                <label htmlFor="email" className="form-label">Email address</label>
-                                <input type="email" className="form-control" id="email" autoComplete="off" required />
+                                <label htmlFor="email" className="form-label">User ID</label>
+                                <input className="form-control" id="email" autoComplete="off" required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="password" className="form-label">Password</label>

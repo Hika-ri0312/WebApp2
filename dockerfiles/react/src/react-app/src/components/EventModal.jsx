@@ -4,11 +4,11 @@ import GlobalContext from "../context/GlobalContext";
 import axios from "axios";
 import dayjs from "dayjs";
 
-const EventModal = () => {
+const EventModal = (props) => {
   const { daySelected, setShowEventModal, dispatchCalEvent, selectedEvent } = useContext(GlobalContext);
   const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : "");
   const host = process.env.REACT_APP_IP_ADDR
-
+  // console.log(props);
   const addAndModifSchedule = (e) => {
     // クリック時に送信するというdefaultの動作をキャンセルする
     e.preventDefault();
@@ -16,7 +16,7 @@ const EventModal = () => {
       title: title,
       day: daySelected.valueOf(),
       id: selectedEvent ? selectedEvent.id : Date.now(),
-      uid:"1",
+      uid:props.email,
       dayTime:daySelected.format("YYYY,dddd, MMMM DD"),
     };
     //console.log(localStorage.getItem("savedEvents"));

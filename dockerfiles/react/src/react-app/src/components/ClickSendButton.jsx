@@ -8,14 +8,31 @@ import {v4 as uuidv4 } from "uuid";
 
 import style from "./ClickSendButton.module.css"
                 
-const ClickSendButton = () =>{
+const ClickSendButton = (props) =>{
     const question = useRef();
     const [message, setMessage] = React.useState([]);
     const [refl, setRefl] = React.useState([]);
     const [visible, setVisible] = useState(false);
+
+    useEffect(() =>{
+        const name = props.conIn
+        if(name === "") return;
+        setMessage([])
+        setMessage((prev) =>{
+            let a = [...prev] 
+            a.push(name)
+            return(
+              [...a]
+            )
+        });
+        question.current.value = null;
+        inputMess=name
+        Requestapi()
+    },[props.conIn])
+
     let inputMess
     useEffect(() => {
-        console.log(message.length)
+        // console.log(message.length)
         if(message.length === 0) return;
         setMessage((prev) =>{
             let a = [...prev] 
