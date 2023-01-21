@@ -11,6 +11,7 @@ import style from "./ClickSendButton.module.css"
 const ClickSendButton = (props) =>{
     const question = useRef();
     const [message, setMessage] = React.useState([]);
+    const [reflmes, setReflmes] = React.useState([]);
     const [refl, setRefl] = React.useState([]);
     const [visible, setVisible] = useState(false);
 
@@ -34,8 +35,9 @@ const ClickSendButton = (props) =>{
     useEffect(() => {
         // console.log(message.length)
         if(message.length === 0) return;
-        setMessage((prev) =>{
-            let a = [...prev] 
+        setReflmes((prev) =>{
+            // let a = [...prev] 
+            let a = []
             a.push(refl.title)
             a.push(refl.source)
             a.push(<br></br>)
@@ -106,7 +108,7 @@ const ClickSendButton = (props) =>{
         <div>
             <div style={{ visibility: visible ? "visible" : "hidden" }}>
                 <div className={style.balloon1_left}>
-                    <MesPr mess={message}/>
+                    <MesPr mess={reflmes}/>
                 </div>
             </div>
             
