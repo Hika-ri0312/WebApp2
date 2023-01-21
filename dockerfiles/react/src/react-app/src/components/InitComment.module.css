@@ -1,97 +1,132 @@
-.balloon1_left {
-    position: relative;
-    display: inline-block;
-    margin: 1.5em 0 0.5em 10px;
-    padding: 0.1px 10px;
-    width: 300px;
-    color: #555;
-    font-size: 16px;
-    background: #e0edff;
-    border-radius: 10px;
-    left:30px; 
-    text-align:  left; 
-
-    /* アニメーション */
-    animation-name: fadeInAnime;
-    animation-fill-mode:backwards;
-    animation-duration:0.1s;
-    animation-timing-function:ease;
-    animation-delay: 0.5s;
-    animation-direction:normal;
+.balloon5 {
+  width: 100%;
+  margin: 1.5em 0;
+  overflow: hidden;
+  text-align:  left; 
+/* アニメーション */
+animation-name: fadeInAnime;
+animation-fill-mode:backwards;
+animation-duration:0.1s;
+animation-timing-function:ease;
+animation-delay: 0.5s;
+animation-direction:normal;
 }
 
 @keyframes fadeInAnime{
+0% {
+opacity: 0;
+}
+
+100% {
+opacity: 1;
+}
+}
+
+.balloon5 .faceicon {
+  float: left;
+  margin-right: -90px;
+  width: 80px;
+}
+
+.balloon5 .faceicon img{
+  width: 100%;
+  height: auto;
+  border: solid 3px #d7ebfe;
+  border-radius: 50%;
+}
+
+.balloon5 .chatting {
+  width: 100%;
+}
+
+.says {
+  display: inline-block;
+  position: relative; 
+  margin: 5px 0 0 105px;
+  padding: 17px 13px;
+  border-radius: 12px;
+  background: #d7ebfe;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px; 
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid #d7ebfe;
+}
+
+.says p {
+  margin: 0;
+  padding: 0;
+}
+
+
+.balloon6 {
+  width: 100%;
+  margin: 1.5em 0;
+  overflow: hidden;
+  left: 50px;
+  
+  /* アニメーション */
+  animation-name: fadeInAnime;
+  animation-fill-mode:backwards;
+  animation-duration:0.1s;
+  animation-timing-function:ease;
+  animation-delay: 2.0s;
+  animation-direction:normal;
+  }
+
+  @keyframes fadeInAnime{
   0% {
-    opacity: 0;
+  opacity: 0;
   }
 
   100% {
-    opacity: 1;
+  opacity: 1;
   }
 }
 
-  
-
-  .balloon1_left:before {
-    content: "";
-    position: absolute;
-    top: 30%;
-    left: -30px;
-    margin-top: -10px;
-    border: 13px solid transparent;
-    border-right: 20px solid #e0edff;
-  }
-  
-  .balloon1_left p {
-    margin: 0;
-    padding: 0;
-  }
-
-.balloon2_left {
-    position: relative;
-    display: inline-block;
-    margin: 1.5em 0 0.5em 10px;
-    padding: 0.1px 10px;
-    width: 300px;
-    color: #555;
-    font-size: 16px;
-    background: #e0edff;
-    border-radius: 10px;
-    left:30px; 
-    text-align:  left; 
-
-    /* アニメーション */
-    animation-name: fadeInAnime;
-    animation-fill-mode:backwards;
-    animation-duration:0.1s;
-    animation-timing-function:ease;
-    animation-delay: 2.0s;
-    animation-direction:normal;
+.balloon6 .faceicon {
+  float: left;
+  margin-right: -90px;
+  width: 80px;
 }
 
-@keyframes fadeInAnime{
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+.balloon6 .faceicon img{
+  width: 100%;
+  height: auto;
+  border: solid 3px #d7ebfe;
+  border-radius: 50%;
 }
 
-  
+.balloon6 .chatting {
+  width: 100%;
+}
 
-  .balloon2_left:before {
-    content: "";
-    position: absolute;
-    top: 30%;
-    left: -30px;
-    margin-top: -10px;
-    border: 13px solid transparent;
-    border-right: 20px solid #e0edff;
-  }
-  
-  .balloon2_left p {
-    margin: 0;
-    padding: 0;
-  }
+.balloon6 .says {
+  text-align:  left;
+  display: inline-block;
+  position: relative; 
+  margin: 5px 0 0 -100px;
+  padding: 17px 13px;
+  border-radius: 12px;
+  background: #d7ebfe;
+}
+
+.balloon6 .says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px; 
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid #d7ebfe;
+}
+
+.balloon6 .says p {
+  margin: 0;
+  padding: 0;
+}

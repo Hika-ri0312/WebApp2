@@ -7,6 +7,8 @@ import {v4 as uuidv4 } from "uuid";
 
 
 import style from "./ClickSendButton.module.css"
+
+import background from "../Webapp2_Q-bo.png";
                 
 const ClickSendButton = (props) =>{
     const question = useRef();
@@ -114,14 +116,22 @@ const ClickSendButton = (props) =>{
         <div>
             
             <div style={{ visibility: visible_q ? "visible" : "hidden" }}>
-                <div className={style.balloon1_left}>
+                <div className={style.balloon1_left}> 
                     <MesPr mess={message}/>
                 </div>
             </div>
 
             <div style={{ visibility: visible ? "visible" : "hidden" }}>
-                <div className={style.balloon3_left}>
-                    <MesPr mess={reflmes}/>
+                <div className={style.balloon6}>
+                    <div className={style.faceicon}>
+                        <img src={background}/>
+                    </div>
+                    <div className={style.chatting}>
+                        <div className={style.says}>
+                            <MesPr mess={reflmes}/>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             
