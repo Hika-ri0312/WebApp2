@@ -2,6 +2,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+
 }
 
 .button{
@@ -21,12 +22,11 @@
 }
 
 .text {
-    left: 20px;
-    
+    /* left: 50px; */
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    margin: 0 auto;
+    /* margin-left: auto; */
     padding: 1em 2em;
     width: 500px;
     color: #333;
@@ -60,7 +60,7 @@
 
 /* 吹き替え用 */
 .balloon1_left {
-    position: relative;
+    /* position: relative;
     display: inline-block;
     margin: 0.1em 0 1.5em 15px;
     padding: 7px 10px;
@@ -69,17 +69,41 @@
     font-size: 16px;
     background: #e0ffeb;
     border-radius: 10px;
-    left:-75px
+    left:-75px; */
+    /* display: none; */
+    position: relative;
+    display: inline-block;
+    margin: 0.1em 0 1.5em 15px;
+    padding: 7px 10px;
+    /* min-width: 120px;
+    max-width: 500px; */
+    width: 500px;
+    color: #555;
+    font-size: 16px;
+    background: #e0ffeb;
+    border-radius: 10px;
+    /* left:-75px;  */
+    margin-right: 0;
+    margin-left: auto;
+    
+    bottom: 50px;
   }
   
   .balloon1_left:before {
-    content: "";
+    /* content: "";
     position: absolute;
     top: 40%;
     left: -30px;
     margin-top: -15px;
     border: 15px solid transparent;
-    border-right: 15px solid #e0ffeb;
+    border-right: 15px solid #e0ffeb; */
+    content: "";
+    position: absolute;
+    top: 60%;
+    left: 100%;
+    margin-top: -15px;
+    border: 10px solid transparent;
+    border-left: 15px solid #e0ffeb;
   }
   
   .balloon1_left p {
@@ -87,7 +111,7 @@
     padding: 0;
   }
 
-
+  
   /* 送信ボタン */
   .flat_border {
     position: relative;
@@ -117,6 +141,7 @@
   .flat_border:active, .flat_border:focus {
     top: 2px;
   }
+
 
 
   

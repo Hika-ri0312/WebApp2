@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme: Theme) =>
     //},
     title: {
       flexGrow: 1,
-      textAlign: "center"
+      textAlign: "center",
+      fontFamily: "MS 明朝"
     }
   })
 );
@@ -53,11 +54,11 @@ export const Home = () => {
                     <Typography variant="h6" className={classes.title}>
                         Q-bo
                     </Typography>
-                    <Button onClick={() => navigate('/register')} color="inherit">Register</Button>
+                    {/* <Button onClick={() => navigate('/register')} color="inherit">Register</Button> */}
                     <Button onClick={() => navigate('/login')} color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
-                </div>
+            </div>
 
             {/* <div className={style.home}>
                 <Link to="/login">Login</Link>
@@ -65,25 +66,37 @@ export const Home = () => {
 
             <div style={{ backgroundImage: `url(${background})`,
               backgroundPosition: 'center',
-              backgroundTepeat: 'no-repeat',
+              backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover' ,
-              height:'900px'
+              height:'auto',
+              minHeight:'750px'
+              
               }}>
       
     
             
-            <InitComment />
             
-            <div className={style.flex_test_box}>
+            
+              <div className={style.flex_test_box}>
                 <div className={style.flex_test_item}>
-                    <ClickSendButton conIn={text}/>
+                    <InitComment />  
+
                 </div>
                 <div className={style.flex_test_item}>
                     <Rank_table conIn={setText}/>
                 </div>
-            </div>
+                
+              </div>
+
+              <center>
+                     
+                <div className={style.mesform}>
+                  <ClickSendButton />
+                </div>
             
-            </div>
+              </center>
+            </div >
+            
         </div>
     );
   };

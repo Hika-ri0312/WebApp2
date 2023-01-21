@@ -11,7 +11,10 @@ import style from "./ClickSendButton.module.css"
 const ClickSendButton = (props) =>{
     const question = useRef();
     const [message, setMessage] = React.useState([]);
+    const [reflmes, setReflmes] = React.useState([]);
     const [refl, setRefl] = React.useState([]);
+    const [visible, setVisible] = useState(false);
+
     useEffect(() =>{
         const name = props.conIn
         if(name === "") return;
@@ -32,8 +35,9 @@ const ClickSendButton = (props) =>{
     useEffect(() => {
         // console.log(message.length)
         if(message.length === 0) return;
-        setMessage((prev) =>{
-            let a = [...prev] 
+        setReflmes((prev) =>{
+            // let a = [...prev] 
+            let a = []
             a.push(refl.title)
             a.push(refl.source)
             a.push(<br></br>)
@@ -94,24 +98,34 @@ const ClickSendButton = (props) =>{
         question.current.value = null;
         inputMess=name
         Requestapi()
+
+        setVisible(true)
+
     }; 
+
+
     return(
         <div>
-            <div className={style.balloon1_left}>
-                <MesPr mess={message}/>
+            <div style={{ visibility: visible ? "visible" : "hidden" }}>
+                <div className={style.balloon1_left}>
+                    <MesPr mess={reflmes}/>
+                </div>
             </div>
-
+            
+            
             <div className={style.message}>
                 <form onSubmit={click}>
-                    <div >                    
-                        <input className={style.text} type="text" placeholder="質問を入力"ref={question}/>
-                        <button className={style.flat_border} onClick={click}>送信 ＞ </button>                     
+                    <div>                    
+                        <input className={style.text} type="text" placeholder="質問を入力"ref={question} />
+                        <button  className={style.flat_border} onClick={click}>送信 ＞ </button> 
+                                            
                     </div>
                 </form>      
             </div>
         </div>
     );
 };
+
 
 export default ClickSendButton;
 
