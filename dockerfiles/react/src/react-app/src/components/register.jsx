@@ -28,8 +28,9 @@ function Register() {
                     if (isLoggedIn == true){
                         setError({styleDisplay: isLoggedIn ? 'none' : 'block', innerText: res.data.error });
                         setSuccess({styleDisplay: isLoggedIn ? 'block' : 'none', innerText: res.data.success });
-                        navigate('/', {
+                        navigate('/Login', {
                             // state: {email : e.target[0].value}
+                            //
                     });
                     }
                     
