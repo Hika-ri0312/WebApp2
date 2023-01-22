@@ -9,6 +9,7 @@ import Login from "./components/Login";
 
 import Calendar from "./components/Calendar";
 import Register from "./components/register";
+import Loading from "./components/Loading";
 
 
 
@@ -23,6 +24,7 @@ function App() {
                     <Route path='/login' element={<Login/>} />
                     <Route path='/register' element={<Register/>} />
                     <Route path='/calendar' element={<Calendar/>} />
+                    <Route path='/loading' element={<Loading/>} />
                 </Routes>  
             </BrowserRouter>
 

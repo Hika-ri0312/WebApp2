@@ -18,7 +18,7 @@ const Login = () => {
             if (res.data.status == "error"){
                 console.log("error");
             } else {
-                navigate('/calendar', {
+                navigate('/loading', {
                     state: {email : e.target[0].value}
                 });
                 // setData(e.target[0].value);
