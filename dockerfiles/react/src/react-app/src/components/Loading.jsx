@@ -34,7 +34,7 @@ const Loading = () =>{
         <section className="flex justify-center items-center h-screen">
             <div>
                 <ReactLoading
-                    type="spin"
+                    type="spokes"
                     color="#ebc634"
                     height="100px"
                     width="100px"
