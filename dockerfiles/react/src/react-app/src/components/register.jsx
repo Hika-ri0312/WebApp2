@@ -30,6 +30,7 @@ function Register() {
                         setSuccess({styleDisplay: isLoggedIn ? 'block' : 'none', innerText: res.data.success });
                         navigate('/Login', {
                             // state: {email : e.target[0].value}
+                            //
                     });
                     }
                     
