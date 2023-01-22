@@ -40,7 +40,7 @@ const Calendar = () => {
                     flag = false
                     return
                 }
-                console.log(res)
+                // console.log(res)
                 setReq(res.data['cont'])
             })
     },[uid]);
@@ -75,7 +75,7 @@ const Calendar = () => {
             </nav>
             {showEventModal && <EventModal email={uid}/>}
             <div className="h-screen flex flex-col">
-                <CalendarHeader />
+                <CalendarHeader/>
                 <div className="flex flex-1">
                 
                 <Month month={currentMonth} />

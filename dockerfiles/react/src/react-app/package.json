@@ -19,6 +19,7 @@
     "react-string-replace": "^1.1.0",
     "react-table": "^7.8.0",
     "react-table-v6": "^6.8.6",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
