@@ -3,11 +3,20 @@ import { MdDeleteForever, MdClose, MdPhotoSizeSelectLarge } from "react-icons/md
 import GlobalContext from "../context/GlobalContext";
 import axios from "axios";
 import dayjs from "dayjs";
+import isBetween from 'dayjs/plugin/isBetween.js';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
+dayjs.extend(isSameOrAfter);
+dayjs.extend(isSameOrBefore);
+dayjs.extend(isBetween);
 
 const EventModal = (props) => {
   const { daySelected, setShowEventModal, dispatchCalEvent, selectedEvent } = useContext(GlobalContext);
   const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : "");
   const host = process.env.REACT_APP_IP_ADDR
+  const now = dayjs().toDate()
+  const b = dayjs(daySelected.$d)
+  if (b.isBefore(now)){return}
   // console.log(props);
   const addAndModifSchedule = (e) => {
     // クリック時に送信するというdefaultの動作をキャンセルする
@@ -20,7 +29,6 @@ const EventModal = (props) => {
       dayTime:daySelected.format("YYYY,dddd, MMMM DD"),
     };
     //console.log(localStorage.getItem("savedEvents"));
-    //console.log(dayjs(daySelected.valueOf().day).format("DD-MM-YY"));
     if (selectedEvent) {
       if (updateRequestApi(calendarEvent) === 1){
         dispatchCalEvent({ type: "update", payload: calendarEvent });

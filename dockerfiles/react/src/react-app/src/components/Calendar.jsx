@@ -10,6 +10,7 @@ import EventModal from "./EventModal";
 import axios from "axios";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom"
+import style from "./Calendar.module.css"
 
 const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -60,8 +61,6 @@ const Calendar = () => {
     }, [monthIndex]);
 
     return (
-
-
         <div>
             <meta charSet="UTF-8" />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
