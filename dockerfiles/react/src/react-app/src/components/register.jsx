@@ -11,7 +11,7 @@ function Register() {
     const [SUCCESS, setSuccess] = useState({styleDisplay: 'none', innerText: ""});
     const handleSubmit = (e) => {
         e.preventDefault();
-        const baseURL = "http://localhost:8080/api/register";
+        const baseURL = "http://localhost:18080/api/register";
         axios.post(baseURL, {
                 "email": e.target[0].value,
                 "password": e.target[1].value,

@@ -7,11 +7,17 @@ import {v4 as uuidv4 } from "uuid";
 
 
 import style from "./ClickSendButton.module.css"
+
+import background from "../Webapp2_Q-bo.png";
                 
 const ClickSendButton = (props) =>{
     const question = useRef();
     const [message, setMessage] = React.useState([]);
+    const [reflmes, setReflmes] = React.useState([]);
     const [refl, setRefl] = React.useState([]);
+    const [visible, setVisible] = useState(false);
+    const [visible_q, setVisible_q] = useState(false);
+
     useEffect(() =>{
         const name = props.conIn
         if(name === "") return;
@@ -25,6 +31,8 @@ const ClickSendButton = (props) =>{
         });
         question.current.value = null;
         inputMess=name
+        setVisible(false)
+        setVisible_q(true)
         Requestapi()
     },[props.conIn])
 
@@ -32,8 +40,9 @@ const ClickSendButton = (props) =>{
     useEffect(() => {
         // console.log(message.length)
         if(message.length === 0) return;
-        setMessage((prev) =>{
-            let a = [...prev] 
+        setReflmes((prev) =>{
+            let a = [] 
+            //let a = [...prev] 
             a.push(refl.title)
             a.push(refl.source)
             a.push(<br></br>)
@@ -71,11 +80,13 @@ const ClickSendButton = (props) =>{
                 setRefl(res.data)
             })
 */
+        console.log(inputMess)
         axios.post(baseURL, {
             "title": inputMess,
         })
             .then(res => {
                 setRefl(res.data)
+                setVisible(true)
             })
     }
 
@@ -93,25 +104,51 @@ const ClickSendButton = (props) =>{
         });
         question.current.value = null;
         inputMess=name
+        setVisible(false)
+        setVisible_q(true)
         Requestapi()
+
+
     }; 
+
+
     return(
         <div>
-            <div className={style.balloon1_left}>
-                <MesPr mess={message}/>
+            
+            <div style={{ visibility: visible_q ? "visible" : "hidden" }}>
+                <div className={style.balloon1_left}> 
+                    <MesPr mess={message}/>
+                </div>
             </div>
 
+            <div style={{ visibility: visible ? "visible" : "hidden" }}>
+                <div className={style.balloon6}>
+                    <div className={style.faceicon}>
+                        <img src={background}/>
+                    </div>
+                    <div className={style.chatting}>
+                        <div className={style.says}>
+                            <MesPr mess={reflmes}/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            
             <div className={style.message}>
                 <form onSubmit={click}>
-                    <div >                    
-                        <input className={style.text} type="text" placeholder="質問を入力"ref={question}/>
-                        <button className={style.flat_border} onClick={click}>送信 ＞ </button>                     
+                    <div>                    
+                        <input className={style.text} type="text" placeholder="質問を入力"ref={question} />
+                        <button  className={style.flat_border} onClick={click}>送信 ＞ </button> 
+                                            
                     </div>
                 </form>      
             </div>
         </div>
     );
 };
+
 
 export default ClickSendButton;
 

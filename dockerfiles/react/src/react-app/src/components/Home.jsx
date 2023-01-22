@@ -18,7 +18,7 @@ import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 
-import background from "../sky.png";
+import background from "../new_sky.jpeg";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme: Theme) =>
     //},
     title: {
       flexGrow: 1,
-      textAlign: "center"
+      textAlign: "center",
+      fontFamily: "MS 明朝"
     }
   })
 );
@@ -53,11 +54,11 @@ export const Home = () => {
                     <Typography variant="h6" className={classes.title}>
                         Q-bo
                     </Typography>
-                    <Button onClick={() => navigate('/register')} color="inherit">Register</Button>
+                    {/* <Button onClick={() => navigate('/register')} color="inherit">Register</Button> */}
                     <Button onClick={() => navigate('/login')} color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
-                </div>
+            </div>
 
             {/* <div className={style.home}>
                 <Link to="/login">Login</Link>
@@ -65,25 +66,38 @@ export const Home = () => {
 
             <div style={{ backgroundImage: `url(${background})`,
               backgroundPosition: 'center',
-              backgroundTepeat: 'no-repeat',
+              backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover' ,
-              height:'900px'
+              height:'auto',
+              minHeight:'1200px',
+              
+              
               }}>
-      
-    
-            
-            <InitComment />
-            
-            <div className={style.flex_test_box}>
+              
+              <div className={style.flex_test_box}>
                 <div className={style.flex_test_item}>
-                    <ClickSendButton conIn={text}/>
+                    <InitComment />  
+
                 </div>
                 <div className={style.flex_test_item}>
                     <Rank_table conIn={setText}/>
                 </div>
-            </div>
+
+                <div className={style.flex_test_item}>
+                                    
+                </div>
+                
+              </div>
+
+              <center>
+                     
+                <div className={style.mesform}>
+                  <ClickSendButton conIn={text}/>
+                </div>
             
-            </div>
+              </center>
+            </div >
+            
         </div>
     );
   };
