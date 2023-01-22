@@ -18,7 +18,7 @@ import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 
-import background from "../sky.png";
+import background from "../new_sky.jpeg";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -69,14 +69,11 @@ export const Home = () => {
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover' ,
               height:'auto',
-              minHeight:'750px'
+              minHeight:'1200px',
+              
               
               }}>
-      
-    
-            
-            
-            
+              
               <div className={style.flex_test_box}>
                 <div className={style.flex_test_item}>
                     <InitComment />  
@@ -84,6 +81,10 @@ export const Home = () => {
                 </div>
                 <div className={style.flex_test_item}>
                     <Rank_table conIn={setText}/>
+                </div>
+
+                <div className={style.flex_test_item}>
+                                    
                 </div>
                 
               </div>
