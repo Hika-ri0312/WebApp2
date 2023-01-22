@@ -1,11 +1,13 @@
 import axios from 'axios'
 import { Home } from "./Home";
 import { useNavigate, BrowserRouter, Link, Routes, Route } from "react-router-dom";
-// import { useState } from 'react';
+import { useState } from 'react';
 
 const Login = () => {
     const navigate = useNavigate();
-    // const [data, setData] = useState('');
+    let isLoggedIn = "";
+    const [ERROR, setError] = useState({styleDisplay: 'none', innerText: ""});
+    const [SUCCESS, setSuccess] = useState({styleDisplay: 'none', innerText: ""});
     const handleSubmit = (e) => {
         e.preventDefault();
         const baseURL = "http://localhost:18080/api/login";
@@ -14,15 +16,22 @@ const Login = () => {
             "password": e.target[1].value,
         })
         .then(res => {
-            // console.log(e.target[0].value);
-            if (res.data.status == "error"){
-                console.log("error");
+            if(res.data.status == "error"){
+                isLoggedIn = false;
+                if (isLoggedIn == false){
+                    setError({styleDisplay: isLoggedIn ? 'none' : 'block', innerText: res.data.error });
+                    setSuccess({styleDisplay: isLoggedIn ? 'block' : 'none', innerText: res.data.success });
+                }
             } else {
-                navigate('/loading', {
-                    state: {email : e.target[0].value}
+                isLoggedIn = true;
+                if (isLoggedIn == true){
+                    setError({styleDisplay: isLoggedIn ? 'none' : 'block', innerText: res.data.error });
+                    setSuccess({styleDisplay: isLoggedIn ? 'block' : 'none', innerText: res.data.success });
+                    navigate('/calendar', {
+                        state: {email : e.target[0].value}
                 });
-                // setData(e.target[0].value);
-                // console.log(data);
+                }
+                
             }
         })
     }
@@ -68,8 +77,9 @@ const Login = () => {
                                 <label htmlFor="password" className="form-label">Password</label>
                                 <input type="password" className="form-control" id="password" autoComplete="off" required />
                             </div>
-                            <div className="alert alert-danger" role="alert" id="error" style={{display: 'none'}} />
-                            <div className="alert alert-success" role="alert" id="success" style={{display: 'none'}} />
+                            
+                            <div className="alert alert-danger" role="alert" id="error" style={{display: ERROR.styleDisplay}}>{ERROR.innerText}</div>
+                            <div className="alert alert-success" role="alert" id="success" style={{display: SUCCESS.styleDisplay}}>{SUCCESS.innerText}</div>
                             <button type="submit" className="btn btn-primary">Login</button>
                         </form>
                     </div>

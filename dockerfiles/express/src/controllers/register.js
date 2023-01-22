@@ -9,7 +9,7 @@ const register = async (req, res) => {
         // console.log(email);
         db.query('SELECT email FROM users WHERE email = ?', [email], async(err, result) => {
             if (err) throw err;
-            if (result[0]) return res.json({ status: "error", error: "Email has already been registered" });
+            if (result[0]) return res.json({ status: "error", error: "User ID has already been registered" });
             else {
                 const password = await bcrypt.hash(Npassword, 8);
                 // console.log(password);
