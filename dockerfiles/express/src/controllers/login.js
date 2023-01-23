@@ -11,7 +11,7 @@ const login = async (req, res) => {
         db.query('SELECT * FROM users WHERE email = ?', [email], async (err, result) => {
             if (err) throw err;
             if (!result.length || !await bcrypt.compare(password, result[0].password)) {
-                return res.json({ status: "error", error: "Email or password is incorrect " });
+                return res.json({ status: "error", error: "User ID or password is incorrect " });
             } else {
                 // console.log(result[0].id, process.env.JWT_SECRET);
                 // console.log(email);
