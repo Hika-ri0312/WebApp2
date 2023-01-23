@@ -8,7 +8,9 @@ function Register() {
     const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault();
-        const baseURL = "http://localhost:18080/api/register";
+        const host = process.env.REACT_APP_IP_ADDR
+        const baseURL = "http://" + host + ":18080/api/register";
+        //const baseURL = "http://express:18080/api/register";
         axios.post(baseURL, {
                 "email": e.target[0].value,
                 "password": e.target[1].value,

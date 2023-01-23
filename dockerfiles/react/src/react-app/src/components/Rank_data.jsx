@@ -6,24 +6,13 @@ let a = 0;
 
 export const Rank_data = () => {    
     const [refl, setRefl] = React.useState([]);
-
-
-
     const host = process.env.REACT_APP_IP_ADDR
     const baseURL = "http://" + host + ":10180/rank_table/get/";
-
-    
-    if (a < 2){
-
-        axios.get(baseURL)
-            .then(res => {
-                
-                setRefl([...refl,res.data.res1,res.data.res2,res.data.res3,res.data.res4,res.data.res5])
-            })
-    }
-    
-    a++;
-
+    axios.get(baseURL)
+        .then(res => {
+            
+            setRefl([...refl,res.data.res1,res.data.res2,res.data.res3,res.data.res4,res.data.res5])
+        })
     return(refl)
 
 }
