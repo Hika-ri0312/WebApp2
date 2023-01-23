@@ -70,11 +70,11 @@ const useStyles = makeStyles((theme: Theme) =>
                 <div className={classes.root}>
                     <AppBar position="static" >
                         <Toolbar>
-                            <button className="navbar-brand" onClick={() => navigate('/')}>Home</button>
+                            <button onClick={() => navigate('/')}>Home</button>
                             <Typography variant="h6" className={classes.title}>
                                 Register Page
                             </Typography>
-                            <button className="navbar-brand text-white" onClick={() => navigate('/login')}>Login</button>
+                            <button onClick={() => navigate('/login')}>Login</button>
                         </Toolbar>
                     </AppBar>
                 </div>
