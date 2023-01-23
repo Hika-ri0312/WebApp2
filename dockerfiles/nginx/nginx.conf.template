@@ -5,14 +5,22 @@ server {
 
     access_log  /var/log/nginx/host.access.log  main;
 
-    location / {
-
+    location /pyapi/ {                                                                                                                                       
         proxy_pass http://api:9000;
         # CORS start
         add_header Access-Control-Allow-Origin http://${IP_ADDR}:10280;
         add_header Access-Control-Allow-Headers "Content-Type";
         add_header Access-Control-Allow-Credentials: true;
         add_header Access-Control-Allow-Methods "POST, GET, OPTIONS";
+        # CORS end
+    }
+    location /api/ {
+        proxy_pass http://express:8081;
+        # CORS start
+        #add_header Access-Control-Allow-Origin http://${IP_ADDR}:10280;
+        #add_header Access-Control-Allow-Headers "Content-Type";
+        #add_header Access-Control-Allow-Credentials: true;
+        #add_header Access-Control-Allow-Methods "POST, GET, OPTIONS";
         # CORS end
     }
     #error_page  404              /404.html;

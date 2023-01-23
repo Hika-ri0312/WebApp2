@@ -8,9 +8,11 @@ import "./Rank_table.module.css";
 
 export default function Rank_table(props) { 
     const rank_data = Rank_data()
+
     const get_ranktable_post = (cell) =>{
         props.conIn(cell.value)
     }
+
 
     const data = [
         { rank: "1", sentence: rank_data[0]},

@@ -15,7 +15,7 @@ const InitComment = ({}) =>{
                 </div>
                 <div className={style.chatting}>
                     <div className={style.says}>
-                        <p>Q-boへようこそ。<br/>こちらでは琉球大学の情報に関するご質問を承っております。</p>
+                        <p>Q-boへようこそ！<br/>ここでは琉球大学知能情報コースに関する質問にお答えします。</p>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@ const InitComment = ({}) =>{
                 </div>
                 <div className={style.chatting}>
                     <div className={style.says}>
-                        <p>質問を入力してください。<br/>（例）<br/>-->夏季休業はいつからですか？</p>
+                        <p>質問を入力してください。<br/>（記入例）<br/>  ☞ 期末試験はいつからですか？</p>
                     </div>
                 </div>
             </div>
