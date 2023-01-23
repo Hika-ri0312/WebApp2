@@ -57,7 +57,7 @@ const EventModal = (props) => {
   };
   
   const pushRequestApi = (cal) =>{
-      const baseURL = "http://" + host + ":10180/calendar/push/";
+      const baseURL = "http://" + host + ":10180/pyapi/calendar/push/";
       axios.post(baseURL,cal)
           .then(res => {
                 if(res.data.res === "ok"){
@@ -70,7 +70,7 @@ const EventModal = (props) => {
   }
 
   const updateRequestApi = (cal) =>{
-      const baseURL = "http://" + host + ":10180/calendar/update/";
+      const baseURL = "http://" + host + ":10180/pyapi/calendar/update/";
       axios.post(baseURL,cal)
           .then(res => {
                 if(res.data.res === "ok"){
@@ -83,7 +83,7 @@ const EventModal = (props) => {
   }
   
   const deleteRequestApi = (cal) =>{
-      const baseURL = "http://" + host + ":10180/calendar/delete/";
+      const baseURL = "http://" + host + ":10180/pyapi/calendar/delete/";
       axios.post(baseURL,cal)
           .then(res => {
                 if(res.data.res === "ok"){

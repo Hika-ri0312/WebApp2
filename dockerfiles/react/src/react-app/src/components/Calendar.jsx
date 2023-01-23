@@ -11,6 +11,29 @@ import axios from "axios";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom"
 import style from "./Calendar.module.css"
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+      color: "#388e3c",
+      backgroundColor: "#81c784"
+    },
+    //menuButton: {
+      //marginRight: theme.spacing(2)
+    //},
+    title: {
+      flexGrow: 1,
+      textAlign: "center",
+      fontFamily: "MS 明朝"
+    }
+  })
+);
 
 const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -19,6 +42,7 @@ const Calendar = () => {
     const location = useLocation();
     const [uid, setUid] = useState();
     const navigate = useNavigate()
+    const classes = useStyles();
 
     let flag = false
     let numFlag = 0
@@ -32,7 +56,7 @@ const Calendar = () => {
 
     useEffect(() => {
         const host = process.env.REACT_APP_IP_ADDR
-        const baseURL = "http://" + host + ":10180/calendar/get/";
+        const baseURL = "http://" + host + ":10180/pyapi/calendar/get/";
         if (uid ==""){return}
         console.log(uid)
         axios.post(baseURL, {"uid":uid})
@@ -66,12 +90,17 @@ const Calendar = () => {
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous" />
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div className="container-fluid">
-                    <button className="navbar-brand" onClick={() => navigate('/')}>Home</button>
-                    <button className="navbar-brand text-white" onClick={() => navigate('/login')}>Login</button>
+                <div className={classes.root}>
+                    <AppBar position="static" >
+                        <Toolbar>
+                            <button onClick={() => navigate('/')}>Home</button>
+                        <Typography variant="h6" className={classes.title}>
+                            Calendar Page
+                        </Typography>
+                            <button onClick={() => navigate('/login')}>Login</button>
+                        </Toolbar>
+                    </AppBar>
                 </div>
-            </nav>
             {showEventModal && <EventModal email={uid}/>}
             <div className="h-screen flex flex-col">
                 <CalendarHeader/>

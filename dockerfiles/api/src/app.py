@@ -8,7 +8,7 @@ app = Flask(__name__)
 # 日本語を使えるように
 app.config['JSON_AS_ASCII'] = False
 
-@app.route('/', methods=['POST'])
+@app.route('/pyapi/', methods=['POST'])
 def post_json():
     reqJson = request.get_json()["title"]
     resMes, source= jus.cos_distance(reqJson) 
@@ -24,7 +24,7 @@ def post_json():
     }
     return jsonify(ref)
 
-@app.route('/calendar/update/', methods=['POST'])
+@app.route('/pyapi/calendar/update/', methods=['POST'])
 def cal_update():
     reqJson = request.get_json()
     mysql.mysqlUpdate(reqJson)
@@ -34,7 +34,7 @@ def cal_update():
     }
     return jsonify(ref)
 
-@app.route('/calendar/push/', methods=['POST'])
+@app.route('/pyapi/calendar/push/', methods=['POST'])
 def cal_push():
     reqJson = request.get_json()
     mysql.mysqlPush(reqJson)
@@ -44,7 +44,7 @@ def cal_push():
     }
     return jsonify(ref)
 
-@app.route('/calendar/delete/', methods=['POST'])
+@app.route('/pyapi/calendar/delete/', methods=['POST'])
 def cal_delete():
     reqJson = request.get_json()
     mysql.mysqlDel(reqJson)
@@ -54,13 +54,13 @@ def cal_delete():
     }
     return jsonify(ref)
 
-@app.route('/calendar/get/',methods=['POST'])
+@app.route('/pyapi/calendar/get/',methods=['POST'])
 def get_json():
     reqJson = request.get_json()
     print(reqJson)
     return jsonify(mysql.mysqlList(reqJson))
 
-@app.route('/rank_table/get/',methods=['GET'])
+@app.route('/pyapi/rank_table/get/',methods=['GET'])
 def get_rank():
     ranking = rank.get_rank() 
     ref = {

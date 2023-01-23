@@ -75,8 +75,10 @@ services:
             - COOKIE_EXPIRES=${COOKIE_EXPIRES}
         volumes:
             - ./dockerfiles/express/:/usr/src/app/
-        ports:
-            - 18080:${EXPRESS_PORT}
+        expose:
+            - ${EXPRESS_PORT}
+              #ports:
+              #- 18080:${EXPRESS_PORT}
         working_dir: /usr/src/app/src
         command: sh -c "npm install && npm install -g nodemon && nodemon"
         depends_on:

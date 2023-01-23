@@ -73,7 +73,7 @@ const ClickSendButton = (props) =>{
 
     const Requestapi = () =>{
         const host = process.env.REACT_APP_IP_ADDR
-        const baseURL = "http://" + host + ":10180";
+        const baseURL = "http://" + host + ":10180/pyapi/";
 /*
         axios.get(baseURL)
             .then(res => {

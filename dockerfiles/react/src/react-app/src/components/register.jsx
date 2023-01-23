@@ -2,9 +2,30 @@ import React , {useState} from 'react';
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 import { Home } from "./Home";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
-function Register() {
-
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+      color: "#388e3c",
+      backgroundColor: "#81c784"
+    },
+    //menuButton: {
+      //marginRight: theme.spacing(2)
+    //},
+    title: {
+      flexGrow: 1,
+      textAlign: "center",
+      fontFamily: "MS 明朝"
+    }
+  })
+);function Register() {
+    const classes = useStyles();
     const navigate = useNavigate()
     let isLoggedIn = "";
     const [ERROR, setError] = useState({styleDisplay: 'none', innerText: ""});
@@ -12,7 +33,7 @@ function Register() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const host = process.env.REACT_APP_IP_ADDR
-        const baseURL = "http://" + host + ":18080/api/register";
+        const baseURL = "http://" + host + ":10180/api/register";
         //const baseURL = "http://express:18080/api/register";
         axios.post(baseURL, {
                 "email": e.target[0].value,
@@ -46,28 +67,17 @@ function Register() {
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous" />
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div className="container-fluid">
-                    <button className="navbar-brand" onClick={() => navigate('/')}>Register Page</button>
-                    <button className="navbar-brand text-white" onClick={() => navigate('/login')}>Login</button>
-                    {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon" />
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Register</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/login">Login</a>
-                        </li>
-                        </ul>
-                    </div> */}
+                <div className={classes.root}>
+                    <AppBar position="static" >
+                        <Toolbar>
+                            <button className="navbar-brand" onClick={() => navigate('/')}>Home</button>
+                            <Typography variant="h6" className={classes.title}>
+                                Register Page
+                            </Typography>
+                            <button className="navbar-brand text-white" onClick={() => navigate('/login')}>Login</button>
+                        </Toolbar>
+                    </AppBar>
                 </div>
-            </nav>
             <div className="container my-5">
                 <div className="card" style={{width: '100%'}}>
                     <div className="card-body">
