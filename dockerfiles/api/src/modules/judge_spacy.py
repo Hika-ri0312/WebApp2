@@ -58,7 +58,7 @@ def cos_distance(text1):
             source.append("")
         else:   
             ret_ans.append(qa_qes[idx] + "は" + qa_lists[idx] + " です。")
-            source.append("ソースは " + sources[idx] + " です。")
+            source.append("引用元は " + sources[idx] + " です。")
     
     return ret_ans, source
 
